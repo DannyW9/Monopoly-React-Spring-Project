@@ -11,3 +11,88 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+div.Board{
+    position: relative;
+    border: 1px solid black;
+    width: 720px;
+    height: 720px;
+
+}
+
+div.tile{
+  position: relative;
+  border: 1px solid black;
+  width: 60px;
+  height: 80px;
+
+}
+
+p.tileText{
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 10px;
+  text-align: center;
+}
+
+div.tileBlue{
+  position: absolute;
+  width: 60px;
+  height: 20px;
+  top: 0;
+  background-color: blue;
+}
+
+div.tileInfo{
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  bottom: 38%;
+
+}
+
+div.BottomRow{
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  bottom: 0px;
+  right: 0px;
+}
+
+div.TopRow{
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  top: 0px;
+  left: 0px;
+}
+
+div.LeftColumn{
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  bottom: 278px;
+  left: -280px;
+  transform: rotate(90deg);
+}
+
+div.RightColumn{
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  top: 279px;
+  right: -280px;
+  transform: rotate(90deg);
+}
+
+div.tileCorner{
+    border: 1px solid black;
+    width: 80px;
+    height: 80px;
+    background-color: black;
+}
