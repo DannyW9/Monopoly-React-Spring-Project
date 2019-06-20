@@ -96,3 +96,7 @@ div.tileCorner{
     height: 80px;
     background-color: black;
 }
+
+.canvas{
+  position: absolute;
+}
