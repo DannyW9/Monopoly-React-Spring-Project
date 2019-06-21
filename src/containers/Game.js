@@ -17,6 +17,12 @@ class React extends Component {
       activePlayerIndex: null
     }
 
+    this.setMoveValue = this.setMoveValue.bind(this);
+    this.updateRolled = this.updateRolled.bind(this);
+    this.updateDoubleCount = this.updateDoubleCount.bind(this);
+    this.updatePlayerPosition = this.updatePlayerPosition.bind(this);
+  }
+
     setMoveValue(newValue){
       this.setState({moveValue: newValue})
     }
@@ -38,8 +44,21 @@ class React extends Component {
 
 
 render(){
+
+const s = this.state;
+
   return(
-    <Board />
+    <Board
+      squares={s.squares}
+      moveValue={s.moveValue}
+      rolled={s.rolled}
+      won={s.rolled}
+      doubleCount={s.doubleCount}
+      setMoveValue={this.setMoveValue}
+      updateRolled={this.updateRolled}
+      updateDoubleCount={this.updateDoubleCount}
+      updatePlayerPosition={this.updatePlayerPosition}
+    />
   )
 }
 
