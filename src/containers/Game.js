@@ -1,7 +1,7 @@
-import React, {Component},  {useState}  from 'react';
+import React, {Component, useState}  from 'react';
 import Board from '../containers/Board';
 
-class React extends Component {
+class Game extends Component {
 
   constructor(props) {
     super(props);
@@ -32,7 +32,7 @@ class React extends Component {
     }
 
     updateDoubleCount(newValue){
-      this.setState({doubleCount: newValue})
+      this.setState({doubleCount: this.doubleCount + newValue})
     }
 
     updatePlayerPosition(moveValue, double){
@@ -52,7 +52,7 @@ const s = this.state;
       squares={s.squares}
       moveValue={s.moveValue}
       rolled={s.rolled}
-      won={s.rolled}
+      won={s.won}
       doubleCount={s.doubleCount}
       setMoveValue={this.setMoveValue}
       updateRolled={this.updateRolled}
@@ -63,3 +63,5 @@ const s = this.state;
 }
 
 }
+
+export default Game;
