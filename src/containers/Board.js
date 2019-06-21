@@ -6,6 +6,7 @@ import Renderer from '../containers/Renderer'
 //Board is 13 units wide... 9 Property slots then 2 slots at each end for corner slots
 class Board extends Component {
 
+
   render(){
 
     const testCardB = {
@@ -90,6 +91,7 @@ class Board extends Component {
           updatePlayerPosition={p.updatePlayerPosition}
           updateDoubleCount={p.updateDoubleCount}
         />
+        {this.renderInit}
       </div>
     )
   }
