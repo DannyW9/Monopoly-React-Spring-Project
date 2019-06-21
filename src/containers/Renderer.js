@@ -3,17 +3,22 @@ import createRenderer from '../helpers/RendererHelper'
 
 class Renderer extends Component {
 
+
+    constructor(props) {
+      super(props);
+
+    }
+
   componentDidMount() {
-    console.log(this.refs)
      const canvas = this.refs.canvas
      const ctx = canvas.getContext("2d")
-     console.log(canvas);
      const renderer = createRenderer();
      renderer.initRenderer(canvas, ctx);
 
      const image = "images/go.png";
 
      renderer.renderPlayer(image, 1,1);
+     console.log(this.props);
   }
 
 

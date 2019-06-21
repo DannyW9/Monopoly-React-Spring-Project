@@ -15,7 +15,7 @@ const createRenderer = function() {
       ctx.stroke();
     },
 
-    renderPlayer(image, position){
+    renderPlayer(image, tile){
       let x = 20;
       let y = 20;
 
