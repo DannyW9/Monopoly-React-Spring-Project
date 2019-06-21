@@ -6,6 +6,7 @@ import Renderer from '../containers/Renderer'
 //Board is 13 units wide... 9 Property slots then 2 slots at each end for corner slots
 class Board extends Component {
 
+
   constructor(props) {
     super(props);
     this.state ={
@@ -17,7 +18,6 @@ class Board extends Component {
   //this.setState({board: this.refs.board})
     console.log(this.props.board);
   }
-
 
   render(){
 
@@ -99,8 +99,8 @@ class Board extends Component {
           rolled={p.rolled}
           won={p.won}
           doubleCount={p.doubleCount}
-          setMoveValue={p.setMoveValue}
-          updateRolled={p.updatedRolled}
+          setMoveValue={this.props.setMoveValue}
+          updateRolled={p.updateRolled}
           updatePlayerPosition={p.updatePlayerPosition}
           updateDoubleCount={p.updateDoubleCount}
         />
