@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Square from '../components/Square'
+import Dice from '../components/Dice'
 import Renderer from '../containers/Renderer'
 //A unit is one tile width
 //Board is 13 units wide... 9 Property slots then 2 slots at each end for corner slots
@@ -78,6 +79,7 @@ class Board extends Component {
             <Square />
           </div>
         </div>
+        <Dice />
       </div>
     )
   }
