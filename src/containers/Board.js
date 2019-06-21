@@ -19,10 +19,16 @@ class Board extends Component {
       color : "lightblue"
     }
 
+    const go = "images/go.png";
+    const jail = "images/jail.png";
+    const freeParking = "images/FreeParking.png";
+    const goToJail = "images/gotojail.png";
+
     return(
       <div>
         <Renderer />
         <div className="Board">
+          <img className="centreImage" src="images/monopolyman.png"/>
           <div className="BottomRow">
             <Square card={testCardLB}/>
             <Square card={testCardLB}/>
@@ -33,7 +39,7 @@ class Board extends Component {
             <Square card={testCardB}/>
             <Square />
             <Square card={testCardB}/>
-            <Square type="Corner"/>
+            <Square cornerImage={go} type="Corner"/>
           </div>
           <div className="LeftColumn">
             <Square />
@@ -45,10 +51,10 @@ class Board extends Component {
             <Square />
             <Square />
             <Square />
-            <Square type="Corner"/>
+            <Square cornerImage={jail} type="Corner"/>
           </div>
           <div className="TopRow">
-          <Square type="Corner"/>
+          <Square cornerImage={freeParking} type="Corner"/>
             <Square />
             <Square />
             <Square />
@@ -60,7 +66,7 @@ class Board extends Component {
             <Square />
           </div>
           <div className="RightColumn">
-            <Square type="Corner"/>
+            <Square cornerImage={goToJail} type="Corner"/>
             <Square />
             <Square />
             <Square />

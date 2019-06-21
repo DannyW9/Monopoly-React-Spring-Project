@@ -12,7 +12,9 @@ const Square = (props) => {
   if(props.type){
     return(
       //Switch statement for type of corner block
-      <div style={{backgroundColor: "grey"}}  className="tileCorner"></div>
+      <div style={{backgroundColor: "grey"}}  className="tileCorner">
+      <img className="cornerImage" src={props.cornerImage} />
+      </div>
     );
   }
 

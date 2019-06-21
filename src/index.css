@@ -93,6 +93,7 @@ div.RightColumn{
 }
 
 div.tileCorner{
+    position: relative;
     border: 1px solid black;
     width: 80px;
     height: 80px;
@@ -101,4 +102,16 @@ div.tileCorner{
 
 .canvas{
   position: absolute;
+}
+
+.centreImage{
+  transform: scale3d(0.5,0.5,0.5);
+  position: absolute;
+  left: 175px;
+  top: 180px;
+}
+
+img.cornerImage{
+  width: 100%;
+  height: 100%;
 }
