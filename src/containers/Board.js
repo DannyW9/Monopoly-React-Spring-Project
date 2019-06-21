@@ -24,6 +24,7 @@ class Board extends Component {
     const jail = "images/jail.png";
     const freeParking = "images/FreeParking.png";
     const goToJail = "images/gotojail.png";
+    const p = this.props;
 
     return(
       <div>
@@ -79,7 +80,16 @@ class Board extends Component {
             <Square />
           </div>
         </div>
-        <Dice />
+        <Dice
+          moveValue={p.moveValue}
+          rolled={p.rolled}
+          won={p.won}
+          doubleCount={p.doubleCount}
+          setMoveValue={p.setMoveValue}
+          updateRolled={p.updatedRolled}
+          updatePlayerPosition={p.updatePlayerPosition}
+          updateDoubleCount={p.updateDoubleCount}
+        />
       </div>
     )
   }
