@@ -101,7 +101,13 @@ div.tileCorner{
 }
 
 .canvas{
+  z-index: 10;
+  left:24.7%;
+  top: 46px;
   position: absolute;
+  border: 5px solid brown;
+  width: 720px;
+  height: 720px;
 }
 
 .centreImage{

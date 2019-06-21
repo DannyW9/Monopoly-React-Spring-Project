@@ -6,8 +6,17 @@ import Renderer from '../containers/Renderer'
 //Board is 13 units wide... 9 Property slots then 2 slots at each end for corner slots
 class Board extends Component {
 
-  constructor(props){
-    super(props)
+
+  constructor(props) {
+    super(props);
+    this.state ={
+      board: ""
+    }
+  }
+
+  componentDidMount(){
+  //this.setState({board: this.refs.board})
+    console.log(this.props.board);
   }
 
   render(){
@@ -30,10 +39,11 @@ class Board extends Component {
     const goToJail = "images/gotojail.png";
     const p = this.props;
 
+
     return(
       <div>
-        <Renderer />
-        <div className="Board">
+        <Renderer board={this.boardElement} />
+        <div ref="board" className="Board">
           <img className="centreImage" src="images/monopolyman.png"/>
           <div className="BottomRow">
             <Square card={testCardLB}/>
@@ -94,6 +104,7 @@ class Board extends Component {
           updatePlayerPosition={p.updatePlayerPosition}
           updateDoubleCount={p.updateDoubleCount}
         />
+        {this.renderInit}
       </div>
     )
   }

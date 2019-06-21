@@ -6,7 +6,6 @@ const Square = (props) => {
     price: 100,
     color: "green"
   }
-  console.log(props);
 
   //if corner block
   if(props.type){
