@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import diceLogic from '../helpers/DiceLogic';
 
 
 class Dice extends Component{
@@ -21,17 +22,11 @@ class Dice extends Component{
       let firstDiceValue = this.getRandomRoll()
       let secondDiceValue = this.getRandomRoll()
       let newValue = firstDiceValue + secondDiceValue
-
-      console.log(this.props);
+      let props = this.props;
       this.props.setMoveValue(newValue)
-
-      if (firstDiceValue === secondDiceValue) {
-        this.props.updatePlayerPosition(newValue, true)
+      diceLogic.checkForDouble(firstDiceValue, secondDiceValue, newValue, props)
+      if (diceLogic.checkIfDouble(firstDiceValue, secondDiceValue)){
         this.setState({doubleRollMessage: "Rolled a double " + firstDiceValue + "! Roll again!"})
-        this.props.updateDoubleCount(1)
-      } else {
-        this.props.updatePlayerPosition(newValue)
-        this.props.updateRolled()
       }
     }
   }
