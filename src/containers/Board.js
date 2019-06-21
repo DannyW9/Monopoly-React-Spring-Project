@@ -29,7 +29,6 @@ class Board extends Component {
     const freeParking = "images/FreeParking.png";
     const goToJail = "images/gotojail.png";
     const p = this.props;
-    const log = console.log(this.props);
 
     return(
       <div>
@@ -91,7 +90,7 @@ class Board extends Component {
           won={p.won}
           doubleCount={p.doubleCount}
           setMoveValue={this.props.setMoveValue}
-          updateRolled={p.updatedRolled}
+          updateRolled={p.updateRolled}
           updatePlayerPosition={p.updatePlayerPosition}
           updateDoubleCount={p.updateDoubleCount}
         />

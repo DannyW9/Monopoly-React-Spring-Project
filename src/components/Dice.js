@@ -6,9 +6,7 @@ class Dice extends Component{
   constructor(props){
     super(props)
     this.state = {
-      doubleRollMessage: "",
-      firstDiceValue: 1,
-      secondDiceValue: 1
+      doubleRollMessage: ""
     }
     this.handleRollDiceClick = this.handleRollDiceClick.bind(this)
   }
@@ -18,18 +16,18 @@ class Dice extends Component{
   }
 
   handleRollDiceClick(){
-    this.setState({doubleMessage: ''})
+    this.setState({doubleRollMessage: ''}) // Resets message when re-rolling after a double
     if (!this.props.rolled && !this.props.won){
-      this.setState({firstDiceValue: this.getRandomRoll()})
-      this.setState({secondDiceValue: this.getRandomRoll()})
-      const newValue = this.firstDiceValue + this.secondDiceValue
+      let firstDiceValue = this.getRandomRoll()
+      let secondDiceValue = this.getRandomRoll()
+      let newValue = firstDiceValue + secondDiceValue
 
       console.log(this.props);
       this.props.setMoveValue(newValue)
 
-      if (this.firstDiceValue === this.secondDiceValue) {
+      if (firstDiceValue === secondDiceValue) {
         this.props.updatePlayerPosition(newValue, true)
-        this.setState({doubleMessage: "Rolled a double " + this.secondDiceValue + "! Roll again!"})
+        this.setState({doubleRollMessage: "Rolled a double " + firstDiceValue + "! Roll again!"})
         this.props.updateDoubleCount(1)
       } else {
         this.props.updatePlayerPosition(newValue)
