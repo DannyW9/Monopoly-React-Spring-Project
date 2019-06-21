@@ -15,7 +15,27 @@ class React extends Component {
       doubleCount: 0,
       activePlayer: null,
       activePlayerIndex: null
-    };
+    }
+
+    setMoveValue(newValue){
+      this.setState({moveValue: newValue})
+    }
+
+    updateRolled(){
+      this.setState({rolled: true})
+    }
+
+    updateDoubleCount(newValue){
+      this.setState({doubleCount: newValue})
+    }
+
+    updatePlayerPosition(moveValue, double){
+
+    }
+
+
+
+
 
 render(){
   return(
