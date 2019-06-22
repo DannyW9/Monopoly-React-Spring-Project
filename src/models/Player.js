@@ -1,8 +1,9 @@
 class Player {
 
-  constructor(name){
+  constructor(name, color){
     this.name = name
     this.money = 1500
+    this.color = color
     this.properties = []
     this.position = 0
     this.jailStatus = false
@@ -27,7 +28,7 @@ class Player {
   }
 
   passGoCheck(moveValue){
-    if( this.potion + moveValue >= 40){
+    if( this.position + moveValue >= 40){
       this.money += 200
     }
   }

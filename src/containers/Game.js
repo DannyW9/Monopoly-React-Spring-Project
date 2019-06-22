@@ -31,8 +31,8 @@ class Game extends Component {
     //   players: []
     // })
 
-    this.state.players.push(new Player('Danny'))
-    this.state.players.push(new Player('Lindsey'))
+    this.state.players.push(new Player('Danny', 'red'))
+    this.state.players.push(new Player('Lindsey', 'orange'))
 
     this.setState({
       moveValue: null,
