@@ -1,33 +1,34 @@
 class Player {
 
-  constructor(name){
-    this.name = name,
-    this.money = 1500,
-    this.properties = [],
-    this.position = 0,
-    this.jailStatus = false,
-    this.timeInJail = 0,
+  constructor(name, color){
+    this.name = name
+    this.money = 1500
+    this.color = color
+    this.properties = []
+    this.position = 0
+    this.jailStatus = false
+    this.timeInJail = 0
     this.goojfCard = false
   }
 
   resetState(){
-    this.money = 1500,
-    this.properties =[],
-    this.position = 0,
-    this.jailStatus = false,
-    this.timeInJail = 0,
+    this.money = 1500
+    this.properties =[]
+    this.position = 0
+    this.jailStatus = false
+    this.timeInJail = 0
     this.goojfCard = false
   }
 
 // Simple update Position without any Jail concerns
   updatePosition(moveValue){
-    passGoCheck(moveValue)
+    this.passGoCheck(moveValue)
     // %40 ensures that the position does not go above 40, and continues around the board
     this.position = (this.position + moveValue) % 40
   }
 
   passGoCheck(moveValue){
-    if( this.potion + moveValue >= 40){
+    if( this.position + moveValue >= 40){
       this.money += 200
     }
   }
