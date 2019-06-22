@@ -30,7 +30,7 @@ class Board extends Component {
     const testCardLB = {
       price : 70,
       name : "Lightblue Town",
-      color : "lightblue"
+      color : "chest"
     }
 
     const go = "images/go.png";
