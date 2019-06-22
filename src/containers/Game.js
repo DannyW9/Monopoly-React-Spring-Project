@@ -1,6 +1,7 @@
 import React, {Component, useState}  from 'react';
 import Board from '../containers/Board';
 import Player from '../models/Player';
+import PlayerStatus from '../components/PlayerStatus';
 
 class Game extends Component {
 
@@ -81,6 +82,10 @@ const s = this.state;
         updatePlayerPosition={this.updatePlayerPosition}
         />
       <button onClick={this.startNewGame}>Start New Game </button>
+      <PlayerStatus
+        players={s.players}
+        activePlayer={s.activePlayer}
+      />
     </div>
   )
 }
