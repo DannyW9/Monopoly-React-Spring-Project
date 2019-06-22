@@ -32,7 +32,7 @@ class Game extends Component {
     }
 
     updateDoubleCount(newValue){
-      this.setState({doubleCount: this.doubleCount + newValue})
+      this.setState({doubleCount: this.state.doubleCount + newValue})
     }
 
     updatePlayerPosition(moveValue, double){
