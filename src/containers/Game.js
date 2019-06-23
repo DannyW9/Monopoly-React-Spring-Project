@@ -80,28 +80,29 @@ class Game extends Component {
 
 render(){
 
-const s = this.state;
+const state = this.state;
 
-let newGameButton = conditionalButtonsLogic.checkIfCurrentGame(s.players.length, this.startNewGame);
+let newGameButton = conditionalButtonsLogic.checkIfCurrentGame(state.players.length, this.startNewGame);
 
   return(
     <div>
       <Board
-        squares={s.squares}
-        moveValue={s.moveValue}
-        rolled={s.rolled}
-        won={s.won}
-        doubleCount={s.doubleCount}
+        squares={state.squares}
+        moveValue={state.moveValue}
+        rolled={state.rolled}
+        won={state.won}
+        doubleCount={state.doubleCount}
         setMoveValue={this.setMoveValue}
         updateRolled={this.updateRolled}
         updateDoubleCount={this.updateDoubleCount}
         updatePlayerPosition={this.updatePlayerPosition}
         updateActivePlayer={this.updateActivePlayer}
+        players={state.players}
         />
       {newGameButton}
       <PlayerStatus
-        players={s.players}
-        activePlayer={s.activePlayer}
+        players={state.players}
+        activePlayer={state.activePlayer}
       />
     </div>
   )

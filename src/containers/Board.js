@@ -39,10 +39,10 @@ class Board extends Component {
     const jail = "images/jail.png";
     const freeParking = "images/FreeParking.png";
     const goToJail = "images/gotojail.png";
-    const p = this.props;
+    const props = this.props;
 
-    let endButton = conditionalButtonsLogic.checkIfTurnEnd(this.state.rolled, this.props)
-
+    let endButton = conditionalButtonsLogic.checkIfTurnEnd(props)
+    let dice = conditionalButtonsLogic.checkIfGameStarted(props)
 
 
     return(
@@ -99,16 +99,7 @@ class Board extends Component {
             <Square />
           </div>
         </div>
-        <Dice
-          moveValue={p.moveValue}
-          rolled={p.rolled}
-          won={p.won}
-          doubleCount={p.doubleCount}
-          setMoveValue={p.setMoveValue}
-          updateRolled={p.updateRolled}
-          updatePlayerPosition={p.updatePlayerPosition}
-          updateDoubleCount={p.updateDoubleCount}
-        />
+        {dice}
         {endButton}
         {this.renderInit}
       </div>
