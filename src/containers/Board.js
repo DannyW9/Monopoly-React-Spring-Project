@@ -3,6 +3,7 @@ import Square from '../components/Square';
 import Dice from '../components/Dice';
 import Renderer from '../containers/Renderer';
 import EndTurn from '../components/EndTurn';
+import conditionalButtonsLogic from '../helpers/ConditionalButtonsLogic';
 //A unit is one tile width
 //Board is 13 units wide... 9 Property slots then 2 slots at each end for corner slots
 class Board extends Component {
@@ -39,6 +40,8 @@ class Board extends Component {
     const freeParking = "images/FreeParking.png";
     const goToJail = "images/gotojail.png";
     const p = this.props;
+
+    let endButton = conditionalButtonsLogic.checkIfTurnEnd(this.state.rolled, this.props)
 
 
 
@@ -106,7 +109,7 @@ class Board extends Component {
           updatePlayerPosition={p.updatePlayerPosition}
           updateDoubleCount={p.updateDoubleCount}
         />
-        <EndTurn updateActivePlayer={p.updateActivePlayer} />
+        {endButton}
         {this.renderInit}
       </div>
     )
