@@ -25,6 +25,7 @@ class Game extends Component {
     this.updateDoubleCount = this.updateDoubleCount.bind(this);
     this.updatePlayerPosition = this.updatePlayerPosition.bind(this);
     this.startNewGame = this.startNewGame.bind(this);
+    this.updateActivePlayer = this.updateActivePlayer.bind(this);
   }
 
   startNewGame(){
@@ -60,6 +61,18 @@ class Game extends Component {
       this.state.activePlayer.updatePosition(moveValue)
     }
 
+    updateActivePlayer(){
+      if(this.state.rolled){
+        const newIndex = (this.state.activePlayerIndex +1) % (this.state.players.length)
+        this.setState({
+          activePlayer: this.state.players[newIndex],
+          activePlayerIndex: newIndex,
+          moveValue: null,
+          rolled: false
+         })
+      }
+    }
+
 
 
 
@@ -80,6 +93,7 @@ const s = this.state;
         updateRolled={this.updateRolled}
         updateDoubleCount={this.updateDoubleCount}
         updatePlayerPosition={this.updatePlayerPosition}
+        updateActivePlayer={this.updateActivePlayer}
         />
       <button onClick={this.startNewGame}>Start New Game </button>
       <PlayerStatus
