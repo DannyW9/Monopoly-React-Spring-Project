@@ -2,6 +2,7 @@ import React, {Component, useState}  from 'react';
 import Board from '../containers/Board';
 import Player from '../models/Player';
 import PlayerStatus from '../components/PlayerStatus';
+import conditionalButtonsLogic from '../helpers/ConditionalButtonsLogic'
 
 class Game extends Component {
 
@@ -81,6 +82,8 @@ render(){
 
 const s = this.state;
 
+let newGameButton = conditionalButtonsLogic.checkIfCurrentGame(s.players.length, this.startNewGame);
+
   return(
     <div>
       <Board
@@ -95,7 +98,7 @@ const s = this.state;
         updatePlayerPosition={this.updatePlayerPosition}
         updateActivePlayer={this.updateActivePlayer}
         />
-      <button onClick={this.startNewGame}>Start New Game </button>
+      {newGameButton}
       <PlayerStatus
         players={s.players}
         activePlayer={s.activePlayer}
