@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import diceLogic from '../helpers/DiceLogic';
+import diceLogic from '../helpers/logic/DiceLogic';
 
 class Dice extends Component{
 

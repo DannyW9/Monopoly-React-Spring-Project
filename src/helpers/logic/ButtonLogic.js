@@ -1,8 +1,8 @@
 import React from 'react';
-import EndTurn from '../components/EndTurn';
-import Dice from '../components/Dice';
+import EndTurn from '../../components/EndTurn';
+import Dice from '../../components/Dice';
 
-const conditionalButtonsLogic ={
+const buttonLogic ={
 
 
   checkIfCurrentGame(noOfPlayers, method) {
@@ -34,4 +34,4 @@ const conditionalButtonsLogic ={
 
 }
 
-export default conditionalButtonsLogic;
+export default buttonLogic;

@@ -3,7 +3,7 @@ import Square from '../components/Square';
 import Dice from '../components/Dice';
 import Renderer from '../containers/Renderer';
 import EndTurn from '../components/EndTurn';
-import conditionalButtonsLogic from '../helpers/ConditionalButtonsLogic';
+import buttonLogic from '../helpers/logic/ButtonLogic';
 //A unit is one tile width
 //Board is 13 units wide... 9 Property slots then 2 slots at each end for corner slots
 class Board extends Component {
@@ -41,8 +41,8 @@ class Board extends Component {
     const goToJail = "images/gotojail.png";
     const props = this.props;
 
-    let endButton = conditionalButtonsLogic.checkIfTurnEnd(props)
-    let dice = conditionalButtonsLogic.checkIfGameStarted(props)
+    let endButton = buttonLogic.checkIfTurnEnd(props)
+    let dice = buttonLogic.checkIfGameStarted(props)
 
 
     return(
