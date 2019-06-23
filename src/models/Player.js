@@ -11,14 +11,14 @@ class Player {
     this.goojfCard = false
   }
 
-  resetState(){
-    this.money = 1500
-    this.properties =[]
-    this.position = 0
-    this.jailStatus = false
-    this.timeInJail = 0
-    this.goojfCard = false
-  }
+  // resetState(){
+  //   this.money = 1500
+  //   this.properties =[]
+  //   this.position = 0
+  //   this.jailStatus = false
+  //   this.timeInJail = 0
+  //   this.goojfCard = false
+  // }
 
 // Simple update Position without any Jail concerns
   updatePosition(moveValue){
