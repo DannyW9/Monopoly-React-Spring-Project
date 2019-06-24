@@ -2,7 +2,7 @@ import React, {Component, useState}  from 'react';
 import Board from '../containers/Board';
 import Player from '../models/Player';
 import PlayerStatus from '../components/PlayerStatus';
-import conditionalButtonsLogic from '../helpers/ConditionalButtonsLogic'
+import buttonLogic from '../helpers/logic/ButtonLogic'
 
 class Game extends Component {
 
@@ -82,7 +82,7 @@ render(){
 
 const state = this.state;
 
-let newGameButton = conditionalButtonsLogic.checkIfCurrentGame(state.players.length, this.startNewGame);
+let newGameButton = buttonLogic.checkIfCurrentGame(state.players.length, this.startNewGame);
 
   return(
     <div>
