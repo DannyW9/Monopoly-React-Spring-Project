@@ -86,6 +86,29 @@ class Card {
     }
   }
 
+  determineMethod(player, players, cardMethod){
+    switch(cardMethod){
+      case 1:
+      this.addMoney(player)
+      case 2:
+      this.subtractMoney(player)
+      case 3:
+      this.movePlayer(player)
+      case 4:
+      this.addGoojfCard(player)
+      case 5:
+      this.performRepairs(player)
+      case 6:
+      this.moveToStation(player)
+      case 7:
+      this.moveToUtility(player)
+      case 8:
+      this.giveToPlayers(player, players)
+      case 9:
+      this.receiveFromPlayers(player, players)
+    }
+  }
+
 
 
 }
