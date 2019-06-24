@@ -43,7 +43,7 @@ class Game extends Component {
       activePlayerIndex: 0,
       won: false
     })
-    
+
   }
 
     setMoveValue(newValue){
@@ -97,12 +97,8 @@ let newGameButton = buttonLogic.checkIfCurrentGame(state.players.length, this.st
         updateRolled={this.updateRolled}
         updateDoubleCount={this.updateDoubleCount}
         updatePlayerPosition={this.updatePlayerPosition}
-<<<<<<< HEAD
-        players={this.state.players}
-=======
         updateActivePlayer={this.updateActivePlayer}
         players={state.players}
->>>>>>> e17863fdde43b8d638ea77fd0e46416fa8a63493
         />
       {newGameButton}
       <PlayerStatus
