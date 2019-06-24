@@ -1,5 +1,6 @@
 import React, {Component, useState}  from 'react';
 import Dice from '../components/Dice';
+import buttonLogic from '../helpers/logic/ButtonLogic'
 
 class PlayerInterface extends Component {
   constructor(props){
@@ -7,9 +8,9 @@ class PlayerInterface extends Component {
   }
 
   render(){
+
     return(
-      <div className="playerInterface">
-      <Dice />
+      <div>
       <p>PLAYER INTERFACE</p>
       </div>
     )

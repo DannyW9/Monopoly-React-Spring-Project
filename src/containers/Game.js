@@ -2,6 +2,7 @@ import React, {Component, useState}  from 'react';
 import Board from '../containers/Board';
 import Player from '../models/Player';
 import PlayerStatus from '../components/PlayerStatus';
+import PlayerInterface from '../components/PlayerInterface';
 import buttonLogic from '../helpers/logic/ButtonLogic';
 import Card from '../models/Card';
 import displayLogic from '../helpers/logic/DisplayLogic';

@@ -96,9 +96,11 @@ class Board extends Component {
             <Square />
           </div>
         </div>
+        <div className="playerInterface">
         {dice}
         {endButton}
         {this.renderInit}
+        </div>
       </div>
     )
   }
