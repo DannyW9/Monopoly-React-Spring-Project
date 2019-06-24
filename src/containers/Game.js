@@ -20,7 +20,8 @@ class Game extends Component {
       activePlayer: null,
       activePlayerIndex: null,
       players: [
-        new Player('Danny', 'red')
+        new Player('Danny', 'red'),
+        new Player('Lindsey', 'green')
       ]
     }
 

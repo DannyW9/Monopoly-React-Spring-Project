@@ -37,16 +37,17 @@ class Renderer extends Component {
 
      this.setState({renderer : renderer});
 
-     renderer.renderAllPlayers(this.props.players);
+    // this.state.renderer.renderPlayersFromProps(this.props.players);
 
      const testvec = new Vec2(1,2);
   }
 
   renderPlayers(){
-    this.state.renderer.renderAllPlayers(this.props.players);
+    //this.state.renderer.renderAllPlayers(this.props.players);
   }
 
   playerPosChanged(){
+    console.log(this.props.players);
     let index = 0;
     if(this.state.playerPositions[0] != this.props.players[0].position){
       console.log("PLAYER 0 MOVED TO: " + this.props.players[0].position);
@@ -54,7 +55,7 @@ class Renderer extends Component {
     }
 
     if(this.state.playerPositions[1] != this.props.players[1].position){
-      console.log("PLAYER 0 MOVED TO: " + this.props.players[1].position);
+      console.log("PLAYER 1 MOVED TO: " + this.props.players[1].position);
       return true;
     }
 
@@ -74,7 +75,7 @@ class Renderer extends Component {
 
       console.log("RENDERING PLAYERS");
     //  this.renderPlayers();
-        this.state.renderer.renderPlayersFromProps(this.props.players);
+      //  this.state.renderer.renderPlayersFromProps(this.props.players);
     }
 
 

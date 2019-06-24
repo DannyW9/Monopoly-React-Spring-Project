@@ -48,14 +48,14 @@ class RenderHelper {
     this.ctx.stroke();
 
   }
-
+/*
   renderAllPlayers(){
     for(let i=0; i<this.players.length;i++){
       console.log("PLAYERS POS", this.players[i]);
       //Using local players to position and props players for colour
       this.renderPlayer(this.players[i], "blue", i*10);
     }
-  }
+  }*/
 
   calculateCoordinates(index){
     //position 1
