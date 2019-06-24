@@ -96,8 +96,8 @@ class Board extends Component {
             <Square />
           </div>
         </div>
-        {endButton}
         {dice}
+        {endButton}
         {this.renderInit}
       </div>
     )

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import diceLogic from '../helpers/logic/DiceLogic';
+import buttonLogic from '../helpers/logic/ButtonLogic';
 
 class Dice extends Component{
 
@@ -56,9 +57,11 @@ class Dice extends Component{
       width: '50px'
     }
 
+    let rollDiceButton = buttonLogic.checkIfCanRoll(this.props, this.handleRollDiceClick)
+
     return(
       <div className="dice-div">
-        <button onClick={this.handleRollDiceClick}> Roll Dice </button>
+        {rollDiceButton}
         <img style={diceStyle} src={this.state.firstFace} />
         <img style={diceStyle} src={this.state.secondFace} />
         <p>{this.state.rollMessage}</p>

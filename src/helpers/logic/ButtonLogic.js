@@ -11,6 +11,12 @@ const buttonLogic ={
     }
   },
 
+  checkIfCanRoll(props, method){
+    if (!props.rolled){
+      return <button onClick={method}> Roll Dice </button>
+    }
+  },
+
   checkIfTurnEnd(props){
     if(props.rolled){
       return <EndTurn updateActivePlayer={props.updateActivePlayer} />
