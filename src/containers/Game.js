@@ -4,6 +4,7 @@ import Player from '../models/Player';
 import PlayerStatus from '../components/PlayerStatus';
 import buttonLogic from '../helpers/logic/ButtonLogic';
 import Card from '../models/Card';
+import displayLogic from '../helpers/logic/DisplayLogic';
 
 class Game extends Component {
 
@@ -19,9 +20,7 @@ class Game extends Component {
       doubleCount: 0,
       activePlayer: null,
       activePlayerIndex: null,
-      players: [
-        new Player('Danny', 'red')
-      ]
+      players: []
     }
 
     this.setMoveValue = this.setMoveValue.bind(this);
@@ -96,6 +95,7 @@ render(){
 const state = this.state;
 
 let newGameButton = buttonLogic.checkIfCurrentGame(state.players.length, this.startNewGame);
+let playerStatus = displayLogic.checkIfStatusCanDisplay(state)
 
   return(
     <div>
@@ -113,10 +113,8 @@ let newGameButton = buttonLogic.checkIfCurrentGame(state.players.length, this.st
         players={state.players}
         />
       {newGameButton}
-      <PlayerStatus
-        players={state.players}
-        activePlayer={state.activePlayer}
-      />
+      {playerStatus}
+
     </div>
   )
 }
