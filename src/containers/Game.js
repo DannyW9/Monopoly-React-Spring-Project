@@ -17,7 +17,9 @@ class Game extends Component {
       doubleCount: 0,
       activePlayer: null,
       activePlayerIndex: null,
-      players: []
+      players: [
+        new Player('Danny', 'red')
+      ]
     }
 
     this.setMoveValue = this.setMoveValue.bind(this);

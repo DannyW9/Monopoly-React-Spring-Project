@@ -1,14 +1,29 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-const PlayerStatus = (props) => {
+class PlayerStatus extends Component{
+
+constructor(props){
+  super(props);
 
 
+}
+
+
+
+  render() {
     return(
-      <h1> Hello World </h1>
+      <div>
 
-    )
+      <div><span>{this.props.players[0].name}{this.props.players[0].money}</span></div>
+      <div><span>{this.props.players[0].colour}</span></div>
+      <div><span>{this.props.players[0].activePlayer}</span></div>
+
+      </div>
+
+    );
 
 
+}
 }
 
 export default PlayerStatus
