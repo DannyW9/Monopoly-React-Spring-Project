@@ -77,6 +77,15 @@ class Card {
     }
   }
 
+  receiveFromPlayers(player, players){
+    for (var debtPlayer in players) {
+      if (debtPlayer != player) {
+        debtPlayer.money -= this.adjustor
+        player.money += this.adjustor
+      }
+    }
+  }
+
 
 
 }
