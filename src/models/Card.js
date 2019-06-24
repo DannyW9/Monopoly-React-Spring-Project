@@ -6,6 +6,8 @@ class Card {
     this.adjustor = adjustor
   }
 
+  let pos = player.positon;
+
   // CARD METHODS
 
   addMoney(player){
@@ -38,6 +40,7 @@ class Card {
 
   }
 
+// STILL NEED TO ADD DOUBLE RENT
   moveToStation(player){
     let pos = player.position
 
@@ -50,5 +53,21 @@ class Card {
       player.money += 200
     }
   }
+
+// STILL NEED TO ADD INCREASED RENT
+  moveToUtility(player){
+    let pos = player.position
+
+    if (pos < 12){
+      pos = 12
+    } else if (12 <= pos < 28) {
+      pos = 28
+    } else if (pos >= 28) {
+      pos = 12
+      player.money += 200
+    }
+  }
+
+
 
 }
