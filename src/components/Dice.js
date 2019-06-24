@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import diceLogic from '../helpers/DiceLogic';
+import diceLogic from '../helpers/logic/DiceLogic';
 
 class Dice extends Component{
 
   constructor(props){
     super(props)
     this.state = {
+      rollMessage: "",
       doubleRollMessage: "",
       firstFace: null,
       secondFace: null
@@ -18,7 +19,9 @@ class Dice extends Component{
   }
 
   handleRollDiceClick(){
-    this.setState({doubleRollMessage: ''}) // Resets message when re-rolling after a double
+    // Resets message when re-rolling
+    this.setState({doubleRollMessage: ''})
+    this.setState({rollMessage: ''})
     // Prevent roll if player has already rolled, or the game is won
     if (!this.props.rolled && !this.props.won){
       // variable setup for helper file
@@ -27,11 +30,14 @@ class Dice extends Component{
       let newValue = firstDiceValue + secondDiceValue
       let props = this.props;
       //Sets the value to be moved by the player
-      this.props.setMoveValue(newValue)
+      props.setMoveValue(newValue)
+
       //Determines whether a double was rolled, and the actions required e.g.able to roll again, count # of cumulative doubles
       diceLogic.checkForDouble(firstDiceValue, secondDiceValue, newValue, props)
       if (diceLogic.checkIfDouble(firstDiceValue, secondDiceValue)){
         this.setState({doubleRollMessage: "Rolled a double " + firstDiceValue + "! Roll again!"})
+      } else {
+        this.setState({rollMessage: "You rolled " + newValue + "!"})
       }
       //Sets state to use for rendering dice faces
       this.setState({firstFace: diceLogic.showDiceFace(firstDiceValue)})
@@ -55,8 +61,7 @@ class Dice extends Component{
         <button onClick={this.handleRollDiceClick}> Roll Dice </button>
         <img style={diceStyle} src={this.state.firstFace} />
         <img style={diceStyle} src={this.state.secondFace} />
-        <p> {this.state.secondDiceValue} </p>
-        <p> You rolled a: {this.props.moveValue}</p>
+        <p>{this.state.rollMessage}</p>
         <p>{this.state.doubleRollMessage}</p>
       </div>
     );

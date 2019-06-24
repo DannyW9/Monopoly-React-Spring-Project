@@ -2,6 +2,7 @@ import React, {Component, useState}  from 'react';
 import Board from '../containers/Board';
 import Player from '../models/Player';
 import PlayerStatus from '../components/PlayerStatus';
+import buttonLogic from '../helpers/logic/ButtonLogic'
 
 class Game extends Component {
 
@@ -25,6 +26,7 @@ class Game extends Component {
     this.updateDoubleCount = this.updateDoubleCount.bind(this);
     this.updatePlayerPosition = this.updatePlayerPosition.bind(this);
     this.startNewGame = this.startNewGame.bind(this);
+    this.updateActivePlayer = this.updateActivePlayer.bind(this);
   }
 
   startNewGame(){
@@ -61,32 +63,51 @@ class Game extends Component {
       this.state.activePlayer.updatePosition(moveValue)
     }
 
+    updateActivePlayer(){
+      if(this.state.rolled){
+        const newIndex = (this.state.activePlayerIndex +1) % (this.state.players.length)
+        this.setState({
+          activePlayer: this.state.players[newIndex],
+          activePlayerIndex: newIndex,
+          moveValue: null,
+          rolled: false
+         })
+      }
+    }
+
 
 
 
 
 render(){
 
-const s = this.state;
+const state = this.state;
+
+let newGameButton = buttonLogic.checkIfCurrentGame(state.players.length, this.startNewGame);
 
   return(
     <div>
       <Board
-        squares={s.squares}
-        moveValue={s.moveValue}
-        rolled={s.rolled}
-        won={s.won}
-        doubleCount={s.doubleCount}
+        squares={state.squares}
+        moveValue={state.moveValue}
+        rolled={state.rolled}
+        won={state.won}
+        doubleCount={state.doubleCount}
         setMoveValue={this.setMoveValue}
         updateRolled={this.updateRolled}
         updateDoubleCount={this.updateDoubleCount}
         updatePlayerPosition={this.updatePlayerPosition}
+<<<<<<< HEAD
         players={this.state.players}
+=======
+        updateActivePlayer={this.updateActivePlayer}
+        players={state.players}
+>>>>>>> e17863fdde43b8d638ea77fd0e46416fa8a63493
         />
-      <button onClick={this.startNewGame}>Start New Game </button>
+      {newGameButton}
       <PlayerStatus
-        players={s.players}
-        activePlayer={s.activePlayer}
+        players={state.players}
+        activePlayer={state.activePlayer}
       />
     </div>
   )
