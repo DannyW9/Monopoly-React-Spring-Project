@@ -5,10 +5,11 @@ class HoverZoom extends Component {
   //Track mouse position and pass to document.elementFromPoint to get element?
   //Use mouse hover?
 
+
   render(){
-    console.log("MOUSE OVER:", document.elementFromPoint(10,10));
+    console.log("MOUSE OVER:");
     return(
-      <h1>HOVER ZOOM</h1>
+      <div></div>
     )
   }
 }

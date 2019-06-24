@@ -23,6 +23,7 @@ div.Board{
 }
 
 div.tile{
+  pointer-events: initial;
   position: relative;
   border: 1px solid black;
   width: 60px;
@@ -109,6 +110,12 @@ div.tileCorner{
   width: 720px;
   height: 720px;
   pointer-events:none;
+}
+
+.boardDivContainer{
+
+  pointer-events:none;
+
 }
 
 .centreImage{

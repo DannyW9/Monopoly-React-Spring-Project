@@ -1,8 +1,10 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react'
 import Square from '../components/Square'
 import Dice from '../components/Dice'
 import Renderer from '../containers/Renderer'
 import buttonLogic from '../helpers/logic/ButtonLogic'
+import HoverZoom from '../components/HoverZoom'
+import Vec2 from  '../helpers/Vec2'
 //A unit is one tile width
 //Board is 13 units wide... 9 Property slots then 2 slots at each end for corner slots
 class Board extends Component {
@@ -10,12 +12,24 @@ class Board extends Component {
   constructor(props) {
     super(props);
     this.state ={
-      board: "bla bla"
+      board: "bla bla",
+      mouseVec : new Vec2(0,0),
+      currentTileSelected : {}
     }
+    this.handleMouseMove = this.handleMouseMove.bind(this);
   }
 
   componentDidMount(){
     console.log(this.props.players);
+  }
+
+  handleMouseMove(event){
+    console.dir(document.elementFromPoint(event.clientX,event.clientY));
+    if(document.elementFromPoint(event.clientX,event.clientY).className == "tileInfo"){
+
+    }
+    this.setState({mouseVec : new Vec2(event.clientX, event.clientY)})
+
   }
 
 
@@ -45,7 +59,8 @@ class Board extends Component {
     return(
       <div>
         <Renderer players={this.props.players} board={this.boardElement} />
-        <div ref="board" className="Board">
+        <HoverZoom mousePosition={this.state.mouseVec}/>
+        <div onMouseMove={this.handleMouseMove} ref="board" className="Board">
           <img className="centreImage" src="images/monopolyman.png"/>
           <div className="BottomRow">
             <Square card={testCardLB}/>
