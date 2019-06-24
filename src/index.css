@@ -108,6 +108,7 @@ div.tileCorner{
   border: 5px solid brown;
   width: 720px;
   height: 720px;
+  pointer-events:none;
 }
 
 .centreImage{

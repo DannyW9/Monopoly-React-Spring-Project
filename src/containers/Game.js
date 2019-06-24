@@ -2,6 +2,7 @@ import React, {Component, useState}  from 'react';
 import Board from '../containers/Board';
 import Player from '../models/Player';
 import PlayerStatus from '../components/PlayerStatus';
+import HoverZoom from '../components/HoverZoom';
 import buttonLogic from '../helpers/logic/ButtonLogic';
 import Card from '../models/Card';
 import displayLogic from '../helpers/logic/DisplayLogic';
@@ -99,6 +100,7 @@ let playerStatus = displayLogic.checkIfStatusCanDisplay(state)
 
   return(
     <div>
+      <HoverZoom />
       <Board
         squares={state.squares}
         moveValue={state.moveValue}
