@@ -128,20 +128,21 @@ img.cornerImage{
   top: 50px;
   z-index: 10;
   width: 300px;
-  height: 100px;
-
+  height: 300px;
+  background-color: pink;
+  border: 1px solid black;
 }
 
 .dice-div{
-  left: 20px;
-  top: 100px;
   z-index: 10;
 }
 
 
 .rolldicebutton{
+  position: relative;
   width: 110px;
   height: 55px;
+  top: 0px;
 }
 
 .endTurn{

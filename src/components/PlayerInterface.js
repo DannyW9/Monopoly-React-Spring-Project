@@ -12,6 +12,8 @@ class PlayerInterface extends Component {
     return(
       <div>
       <p>PLAYER INTERFACE</p>
+      <button>Buy Property</button>
+      <button>Manage Property</button>
       </div>
     )
   }

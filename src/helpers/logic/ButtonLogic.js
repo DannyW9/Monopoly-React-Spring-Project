@@ -14,6 +14,8 @@ const buttonLogic ={
   checkIfCanRoll(props, method){
     if (!props.rolled){
       return <button className="rolldicebutton" onClick={method}> Roll Dice </button>
+    }else{
+      return <button className="rolldicebutton" disabled onClick={method}> Roll Dice </button>
     }
   },
 
