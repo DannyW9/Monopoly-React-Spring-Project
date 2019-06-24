@@ -58,6 +58,7 @@ class Game extends Component {
 
     setMoveValue(newValue){
       this.setState({moveValue: newValue})
+      //Somehow trigger function within renderer?
     }
 
     updateRolled(){
