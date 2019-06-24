@@ -26,7 +26,7 @@ class Board extends Component {
   handleMouseMove(event){
     console.dir(document.elementFromPoint(event.clientX,event.clientY));
     if(document.elementFromPoint(event.clientX,event.clientY).className == "tileInfo"){
-
+      this.setState({currentTileSelected : document.elementFromPoint(event.clientX,event.clientY)})
     }
     this.setState({mouseVec : new Vec2(event.clientX, event.clientY)})
 
@@ -59,7 +59,7 @@ class Board extends Component {
     return(
       <div>
         <Renderer players={this.props.players} board={this.boardElement} />
-        <HoverZoom mousePosition={this.state.mouseVec}/>
+        <HoverZoom mousePosition={this.state.currentTileSelected}/>
         <div onMouseMove={this.handleMouseMove} ref="board" className="Board">
           <img className="centreImage" src="images/monopolyman.png"/>
           <div className="BottomRow">
