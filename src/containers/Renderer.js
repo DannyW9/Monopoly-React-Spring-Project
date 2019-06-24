@@ -1,25 +1,43 @@
 import React, {Component} from 'react';
 import createRenderer from '../helpers/RendererHelper'
+import RenderHelper from '../helpers/RenderHelperClass'
+import tilePositions from '../helpers/tilePositions';
+import Vec2 from '../helpers/Vec2';
 
 class Renderer extends Component {
 
 
-    constructor(props) {
+  constructor(props) {
       super(props);
+      this.renderer = {};
+  }
 
-    }
+  //Animate Movement
+  animatePlayer(){
+    //Render at position
+      //move one
+        //render
+  }
+
+  moveOneAndRender(current, renderer){
+    //renderer.renderPlayer(current, "red");
+  }
+
+  //Check Players positions
 
   componentDidMount() {
+    console.log(this.props.players);
      const canvas = this.refs.canvas
      const ctx = canvas.getContext("2d")
-     const renderer = createRenderer();
-     renderer.initRenderer(canvas, ctx);
+     const renderer = new RenderHelper(canvas, ctx);
 
-     const image = "images/go.png";
+     renderer.renderAllPlayers();
+     //renderer.moveAndRenderLoop();
 
-     renderer.renderPlayer(image, 1,1);
-     console.log(this.props);
+     const testvec = new Vec2(1,2);
   }
+
+
 
 
   render(){

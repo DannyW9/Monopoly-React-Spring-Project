@@ -41,6 +41,7 @@ class Game extends Component {
       activePlayerIndex: 0,
       won: false
     })
+    
   }
 
     setMoveValue(newValue){
@@ -80,6 +81,7 @@ const s = this.state;
         updateRolled={this.updateRolled}
         updateDoubleCount={this.updateDoubleCount}
         updatePlayerPosition={this.updatePlayerPosition}
+        players={this.state.players}
         />
       <button onClick={this.startNewGame}>Start New Game </button>
       <PlayerStatus
