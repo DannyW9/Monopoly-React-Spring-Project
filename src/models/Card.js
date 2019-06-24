@@ -21,17 +21,34 @@ class Card {
     if (this.text === "Go back 3 spaces."){
       player.position -= 3
     } else {
-      // Move to specified position
-      player.position = this.adjustor
-      // Check if this will make the player pass go
+            // Check if this will make the player pass go
       if ((player.position > this.adjustor) && (this.adjustor != 10)){
         player.money += 200
       }
+      // Move to specified position
+      player.position = this.adjustor
     }
   }
 
   addGoojfCard(player){
     player.goojfCard = true
+  }
+
+  performRepairs(player){
+
+  }
+
+  moveToStation(player){
+    let pos = player.position
+
+    if (pos < 15){
+      pos = 15
+    } else if (15 <= pos < 25) {
+      pos = 25
+    } else if (pos >= 35) {
+      pos = 5
+      player.money += 200
+    }
   }
 
 }
