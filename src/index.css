@@ -165,3 +165,18 @@ img.cornerImage{
   height: 100px;
   width: 300px;
 }
+
+.BuyProperty{
+  position: absolute;
+  width: 110px;
+  height: 55px;
+  bottom: 0px;
+}
+
+.ManageProperty{
+  position: absolute;
+  width: 110px;
+  height: 55px;
+  bottom: 0px;
+  left: 110px;
+}

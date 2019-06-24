@@ -25,8 +25,8 @@ class PlayerInterface extends Component {
     return(
       <div>
       <p>PLAYER INTERFACE</p>
-      <button onClick={this.handleBuyProperty}>Buy Property</button>
-      <button onClick={this.handleManageProperty}>Manage Property</button>
+      <button className="BuyProperty" onClick={this.handleBuyProperty}>Buy Property</button>
+      <button className="ManageProperty" onClick={this.handleManageProperty}>Manage Property</button>
       </div>
     )
   }
