@@ -68,6 +68,15 @@ class Card {
     }
   }
 
+  giveToPlayers(player, players){
+    for (var owedPlayer in players) {
+      if (owedPlayer != player) {
+        owedPlayer.money += this.adjustor
+        player.money -= adjustor
+      }
+    }
+  }
+
 
 
 }
