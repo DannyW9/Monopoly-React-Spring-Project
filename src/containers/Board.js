@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-import Square from '../components/Square';
-import Dice from '../components/Dice';
-import Renderer from '../containers/Renderer';
-import EndTurn from '../components/EndTurn';
-import buttonLogic from '../helpers/logic/ButtonLogic';
+import Square from '../components/Square'
+import Dice from '../components/Dice'
+import Renderer from '../containers/Renderer'
 //A unit is one tile width
 //Board is 13 units wide... 9 Property slots then 2 slots at each end for corner slots
 class Board extends Component {
@@ -38,10 +36,7 @@ class Board extends Component {
     const jail = "images/jail.png";
     const freeParking = "images/FreeParking.png";
     const goToJail = "images/gotojail.png";
-    const props = this.props;
-
-    let endButton = buttonLogic.checkIfTurnEnd(props)
-    let dice = buttonLogic.checkIfGameStarted(props)
+    const p = this.props;
 
 
     return(
@@ -98,7 +93,6 @@ class Board extends Component {
             <Square />
           </div>
         </div>
-<<<<<<< HEAD
         <Dice
           moveValue={p.moveValue}
           rolled={p.rolled}
@@ -109,10 +103,6 @@ class Board extends Component {
           updatePlayerPosition={p.updatePlayerPosition}
           updateDoubleCount={p.updateDoubleCount}
         />
-=======
-        {dice}
-        {endButton}
->>>>>>> e17863fdde43b8d638ea77fd0e46416fa8a63493
         {this.renderInit}
       </div>
     )
