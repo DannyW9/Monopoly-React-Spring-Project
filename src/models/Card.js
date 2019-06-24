@@ -30,6 +30,8 @@ class Card {
     }
   }
 
-  
+  addGoojfCard(player){
+    player.goojfCard = true
+  }
 
 }
