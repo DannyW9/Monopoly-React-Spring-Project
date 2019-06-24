@@ -1,12 +1,11 @@
 class Card {
 
-  constructor(text, method, adjustor){
-    this.text = text,
-    this.method = method,
+  constructor(type, text, method, adjustor){
+    this.type = type
+    this.text = text
+    this.method = method
     this.adjustor = adjustor
   }
-
-  let pos = player.positon;
 
   // CARD METHODS
 
@@ -72,7 +71,7 @@ class Card {
     for (var owedPlayer in players) {
       if (owedPlayer != player) {
         owedPlayer.money += this.adjustor
-        player.money -= adjustor
+        player.money -= this.adjustor
       }
     }
   }
@@ -107,8 +106,9 @@ class Card {
       case 9:
       this.receiveFromPlayers(player, players)
     }
+    alert(this.text)
   }
 
-
-
 }
+
+export default Card;
