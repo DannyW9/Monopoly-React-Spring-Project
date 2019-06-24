@@ -1,9 +1,10 @@
 import React, {Component, useState}  from 'react';
-import Board from '../containers/Board';
+import Card from '../models/Card';
+import Square from '../models/Square';
 import Player from '../models/Player';
+import Board from '../containers/Board';
 import PlayerStatus from '../components/PlayerStatus';
 import buttonLogic from '../helpers/logic/ButtonLogic';
-import Card from '../models/Card';
 import displayLogic from '../helpers/logic/DisplayLogic';
 import Request from '../helpers/Request';
 
@@ -46,12 +47,12 @@ class Game extends Component {
       }
     })
 
-    // request.get('/squares')
-    // .then((data) => {
-    //   for (let squre of data) {
-    //     this.state.squares.push(new Square)
-    //   }
-    // })
+    request.get('/squares')
+    .then((data) => {
+      for (let square of data) {
+        this.state.squares.push(new Square(square.name, square.squareNumber, square.setColor, square.purchasePrice, square.rent, square.h1, square.h2, square.h3, square.h4, square.hotel, square.buildCost))
+      }
+    })
   }
 
 
