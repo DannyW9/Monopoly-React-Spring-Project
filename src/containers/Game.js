@@ -57,9 +57,8 @@ class Game extends Component {
 
 
   startNewGame(){
-    // this.setState({
-    //   players: []
-    // })
+
+    // METHOD TO SHUFFLE CARD ARRAYS
 
     this.state.players.push(new Player('Danny', 'red'))
     this.state.players.push(new Player('Lindsey', 'orange'))
