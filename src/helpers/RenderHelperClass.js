@@ -11,18 +11,22 @@ class RenderHelper {
       this.players = [this.p1,this.p2,this.p3,this.p4];
   }
 
-  moveAndRenderLoop(){
+  testFunction(){
+
+  }
+
+  moveAndRenderLoop(playerIndex, targetIndex){
     //check
 
-    if(/*Player pos != CurrentPos*/true){
+    if(/*this.players[playerIndex] < this.props.players[playerIndex].position*/true){
       //clear
       this.clearCanvas();
 
       //move
-      this.p1 += 1;
+      this.players[playerIndex] += 1;
 
       //render
-      this.renderPlayer(this.p1, "pink");
+      this.renderAllPlayers();
 
       //wait - loop
       setTimeout(() => {
@@ -33,7 +37,6 @@ class RenderHelper {
   }
 
   renderPlayer(positionIndex, color, offset){
-    //console.log(player1Test.positionIndex);
     let position = this.calculateCoordinates(positionIndex);
     this.ctx.beginPath();
     this.ctx.arc(position.x + 25 + offset, position.y + 25 + offset, 15, 0, 2 * Math.PI);
@@ -45,12 +48,14 @@ class RenderHelper {
     this.ctx.stroke();
 
   }
-
+/*
   renderAllPlayers(){
-    for(let i=0; i<4;i++){
-      this.renderPlayer(this.players[i], "blue", i*5);
+    for(let i=0; i<this.players.length;i++){
+      console.log("PLAYERS POS", this.players[i]);
+      //Using local players to position and props players for colour
+      this.renderPlayer(this.players[i], "blue", i*10);
     }
-  }
+  }*/
 
   calculateCoordinates(index){
     //position 1
@@ -77,6 +82,16 @@ class RenderHelper {
 
   clearCanvas(){
     this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
+  }
+
+  renderPlayersFromProps(playerprops){
+    this.clearCanvas();
+    console.log("PLAYER PROPS: ", playerprops);
+    for(let i=0; i<playerprops.length;i++){
+      console.log("PLAYERS POS", playerprops[i]);
+      //Using local players to position and props players for colour
+      this.renderPlayer(playerprops[i].position, playerprops[i].color, i*10);
+    }
   }
 
 }
