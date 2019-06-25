@@ -60,9 +60,6 @@ class Game extends Component {
 
 
   startNewGame(){
-
-    // METHOD TO SHUFFLE CARD ARRAYS
-
     this.state.players.push(new Player('Danny', 'red'))
     this.state.players.push(new Player('Lindsey', 'orange'))
 
@@ -70,8 +67,19 @@ class Game extends Component {
       moveValue: null,
       activePlayer: this.state.players[0],
       activePlayerIndex: 0,
-      won: false
+      chanceCards: this.shuffleCards(this.state.chanceCards),
+      chestCards: this.shuffleCards(this.state.chestCards)
+
     })
+
+  }
+
+  shuffleCards(array){
+    for (let i = array.length -1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]]
+    }
+    return array;
 
   }
 
