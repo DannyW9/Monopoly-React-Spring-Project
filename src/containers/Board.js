@@ -72,10 +72,6 @@ class Board extends Component {
               <BoardSide squares={toprow} cornerImage={freeParking} boardSide={"TopRow"}/>
               <BoardSide squares={rightrow} cornerImage={goToJail} boardSide={"RightColumn"}/>
           </div>
-          {dice}
-          {endButton}
-          {this.renderInit}
-        </div>
         <div className="playerInterface">
         <PlayerInterface />
         {dice}
@@ -84,11 +80,9 @@ class Board extends Component {
         </div>
       </div>
     )
-
-      )
     }
-
   }
-}
+  }
+
 
 export default Board;

@@ -26,16 +26,10 @@ class PlayerInterface extends Component {
       <p>PLAYER INTERFACE</p>
       <button className="BuyProperty" onClick={this.handleBuyProperty}>Buy Property</button>
       <button className="ManageProperty" onClick={this.handleManageProperty}>Manage Property</button>
-
-  }
-
-  render(){
-    return(
-      <div className="playerInterface">
-      <p>PLAYER INTERFACE</p>
       </div>
     )
   }
+
 }
 
 export default PlayerInterface;
