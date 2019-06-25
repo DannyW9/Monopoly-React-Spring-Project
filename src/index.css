@@ -183,3 +183,11 @@ img.cornerImage{
   left: 110px;
 
 }
+
+.propertyOwnedTab{
+  position: absolute;
+  width: 60px;
+  height: 10px;
+  background-color: pink;
+  bottom: 0px;
+}
