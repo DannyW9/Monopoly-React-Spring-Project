@@ -34,7 +34,7 @@ const Square = (props) => {
   //property tile
   return(
     <div className="tile">
-      <div style={{backgroundColor: props.card.color}}  className="tileColor">
+      <div style={{backgroundColor: props.card.setColor}}  className="tileColor">
         </div>
         <div className="tileInfo">
           <p className="tileText">{props.card.name}</p>

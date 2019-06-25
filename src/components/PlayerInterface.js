@@ -5,7 +5,6 @@ import buttonLogic from '../helpers/logic/ButtonLogic'
 class PlayerInterface extends Component {
   constructor(props){
     super(props);
-
     this.handleBuyProperty = this.handleBuyProperty.bind(this);
     this.handleManageProperty = this.handleManageProperty.bind(this);
   }
@@ -27,6 +26,13 @@ class PlayerInterface extends Component {
       <p>PLAYER INTERFACE</p>
       <button className="BuyProperty" onClick={this.handleBuyProperty}>Buy Property</button>
       <button className="ManageProperty" onClick={this.handleManageProperty}>Manage Property</button>
+
+  }
+
+  render(){
+    return(
+      <div className="playerInterface">
+      <p>PLAYER INTERFACE</p>
       </div>
     )
   }

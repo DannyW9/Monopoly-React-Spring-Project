@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Square from '../components/Square'
 import Dice from '../components/Dice'
 import PlayerInterface from '../components/PlayerInterface'
+import BoardSide from '../components/BoardSide'
 import Renderer from '../containers/Renderer'
 import buttonLogic from '../helpers/logic/ButtonLogic'
 //A unit is one tile width
@@ -19,6 +20,10 @@ class Board extends Component {
     console.log(this.props.players);
   }
 
+  handleLoading(){
+    return <p> Loading HOOKS???</p>
+  }
+
 
   render(){
 
@@ -34,6 +39,7 @@ class Board extends Component {
       color : "lightblue"
     }
 
+    let bottomrow = (<p>LOADING</p>);
     const go = "images/go.png";
     const jail = "images/jail.png";
     const freeParking = "images/FreeParking.png";
@@ -43,59 +49,32 @@ class Board extends Component {
     let endButton = buttonLogic.checkIfTurnEnd(props)
     let dice = buttonLogic.checkIfGameStarted(props)
 
-    return(
-      <div>
-        <Renderer players={this.props.players} board={this.boardElement} />
-        <div ref="board" className="Board">
-          <img className="centreImage" src="images/monopolyman.png"/>
-          <div className="BottomRow">
-            <Square card={testCardLB}/>
-            <Square card={testCardLB}/>
-            <Square />
-            <Square card={testCardLB}/>
-            <Square />
-            <Square />
-            <Square card={testCardB}/>
-            <Square />
-            <Square card={testCardB}/>
-            <Square cornerImage={go} type="Corner"/>
+    if(this.props.squares){
+
+    }
+
+    if(this.props.squares.length <= 0){
+      return this.handleLoading();
+    } else {
+
+      const bottomrow = this.props.squares.slice(0,10).reverse();
+      const leftrow = this.props.squares.slice(10,20).reverse();
+      const toprow = this.props.squares.slice(20,30);
+      const rightrow = this.props.squares.slice(30,40);
+
+      return(
+        <div>
+          <Renderer players={this.props.players} board={this.boardElement} />
+          <div ref="board" className="Board">
+            <img className="centreImage" src="images/monopolyman.png"/>
+              <BoardSide squares={bottomrow} cornerImage={go} boardSide={"BottomRow"}/>
+              <BoardSide squares={leftrow} cornerImage={jail} boardSide={"LeftColumn"}/>
+              <BoardSide squares={toprow} cornerImage={freeParking} boardSide={"TopRow"}/>
+              <BoardSide squares={rightrow} cornerImage={goToJail} boardSide={"RightColumn"}/>
           </div>
-          <div className="LeftColumn">
-            <Square />
-            <Square />
-            <Square />
-            <Square />
-            <Square />
-            <Square />
-            <Square />
-            <Square />
-            <Square />
-            <Square cornerImage={jail} type="Corner"/>
-          </div>
-          <div className="TopRow">
-          <Square cornerImage={freeParking} type="Corner"/>
-            <Square />
-            <Square />
-            <Square />
-            <Square />
-            <Square />
-            <Square />
-            <Square />
-            <Square />
-            <Square />
-          </div>
-          <div className="RightColumn">
-            <Square cornerImage={goToJail} type="Corner"/>
-            <Square />
-            <Square />
-            <Square />
-            <Square />
-            <Square />
-            <Square />
-            <Square />
-            <Square />
-            <Square />
-          </div>
+          {dice}
+          {endButton}
+          {this.renderInit}
         </div>
         <div className="playerInterface">
         <PlayerInterface />
@@ -105,6 +84,10 @@ class Board extends Component {
         </div>
       </div>
     )
+
+      )
+    }
+
   }
 }
 
