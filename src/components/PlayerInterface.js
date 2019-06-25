@@ -1,18 +1,16 @@
 import React, {Component, useState}  from 'react';
 import Dice from '../components/Dice';
+import Purchase from '../components/Purchase';
 import buttonLogic from '../helpers/logic/ButtonLogic'
 
 class PlayerInterface extends Component {
   constructor(props){
     super(props);
-    this.handleBuyProperty = this.handleBuyProperty.bind(this);
+
     this.handleManageProperty = this.handleManageProperty.bind(this);
   }
 
-  //Buy Prop
-  handleBuyProperty(){
-    console.log("Purchase Prop");
-  }
+
 
   //Manage Prop
   handleManageProperty(){
@@ -24,7 +22,11 @@ class PlayerInterface extends Component {
     return(
       <div>
       <p>PLAYER INTERFACE</p>
-      <button className="BuyProperty" onClick={this.handleBuyProperty}>Buy Property</button>
+      <Purchase
+        purchaseProperty={this.props.purchaseProperty}
+        activePlayer={this.props.activePlayer}
+        squares={this.props.squares}
+        />
       <button className="ManageProperty" onClick={this.handleManageProperty}>Manage Property</button>
       </div>
     )

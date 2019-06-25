@@ -33,6 +33,7 @@ class Game extends Component {
     this.updatePlayerPosition = this.updatePlayerPosition.bind(this);
     this.startNewGame = this.startNewGame.bind(this);
     this.updateActivePlayer = this.updateActivePlayer.bind(this);
+    this.purchaseProperty = this.purchaseProperty.bind(this);
   }
 
   componentDidMount(){
@@ -113,6 +114,16 @@ class Game extends Component {
       }
     }
 
+    purchaseProperty(){
+      let activePlayer = this.state.activePlayer
+      let currentProperty = this.state.squares[activePlayer.position]
+
+      activePlayer.properties.push(currentProperty)
+      activePlayer.buyProperty(currentProperty)
+      currentProperty.owner = activePlayer
+      this.setState({activePlayer: activePlayer});
+    }
+
 
 
 
@@ -138,6 +149,8 @@ let playerStatus = displayLogic.checkIfStatusCanDisplay(state)
         updatePlayerPosition={this.updatePlayerPosition}
         updateActivePlayer={this.updateActivePlayer}
         players={state.players}
+        purchaseProperty={this.purchaseProperty}
+        activePlayer={state.activePlayer}
         />
       {newGameButton}
       {playerStatus}

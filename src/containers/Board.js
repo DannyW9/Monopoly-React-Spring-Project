@@ -73,7 +73,10 @@ class Board extends Component {
               <BoardSide squares={rightrow} cornerImage={goToJail} boardSide={"RightColumn"}/>
           </div>
         <div className="playerInterface">
-        <PlayerInterface />
+        <PlayerInterface
+          purchaseProperty={this.props.purchaseProperty}
+          activePlayer={this.props.activePlayer}
+          squares={this.props.squares}/>
         {dice}
         {endButton}
         {this.renderInit}

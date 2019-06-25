@@ -47,6 +47,10 @@ class Player {
     return this.money
   }
 
+  buyProperty(square){
+    this.money -= square.purchasePrice
+  }
+
 
 }
 

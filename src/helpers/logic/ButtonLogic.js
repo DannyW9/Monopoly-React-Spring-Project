@@ -19,6 +19,14 @@ const buttonLogic ={
     }
   },
 
+  checkIfCanBuyProperty(square, method){
+    if (square.owner === null && square.purchasePrice > 0) {
+      return <button className="BuyProperty" onClick={method}>Buy Property</button>
+    } else {
+      return <button className="BuyProperty" disabled onClick={method}>Buy Property</button>
+    }
+  },
+
   checkIfTurnEnd(props){
     if(props.rolled){
       return <EndTurn updateActivePlayer={props.updateActivePlayer} />
