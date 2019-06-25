@@ -122,6 +122,8 @@ img.cornerImage{
   height: 100%;
 }
 
+
+
 .playerInterface{
   position: absolute;
   left: 20px;
@@ -179,4 +181,5 @@ img.cornerImage{
   height: 55px;
   bottom: 0px;
   left: 110px;
+
 }
