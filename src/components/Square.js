@@ -63,6 +63,25 @@ const Square = (props) => {
     );
   }
 
+  //Property is owned
+  //CHANGE TO !=
+  if(props.card.owner != null){
+    return(
+    <div className="tile">
+      <div style={{backgroundColor: props.card.setColor}}  className="tileColor">
+        </div>
+        <div className="tileInfo">
+          <p className="tileText">{props.card.name}</p>
+          <p className="tileText">{props.card.price}</p>
+          <p className="tileText">{props.card.purchasePrice}</p>
+      </div>
+      <div style={{backgroundColor : props.card.owner.color}} className="propertyOwnedTab">
+      </div>
+    </div>
+
+  )
+  }
+
   //property tile
   return(
     <div className="tile">
