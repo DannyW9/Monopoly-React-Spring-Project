@@ -18,6 +18,7 @@ class Board extends Component {
 
   componentDidMount(){
     console.log(this.props.players);
+    this.props.updateMessage("Player1's turn to roll!")
   }
 
   handleLoading(){
@@ -48,10 +49,7 @@ class Board extends Component {
 
     let endButton = buttonLogic.checkIfTurnEnd(props)
     let dice = buttonLogic.checkIfGameStarted(props)
-
-    if(this.props.squares){
-
-    }
+    //dice.props.mostRecentAction = this.props.mostRecentAction;
 
     if(this.props.squares.length <= 0){
       return this.handleLoading();

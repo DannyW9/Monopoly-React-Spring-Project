@@ -13,13 +13,14 @@ code {
 }
 
 div.Board{
-    left:25%;
-    top: 50px;
-    position: relative;
+    top: 25px;
     border: 1px solid black;
+    background-color: #cee6d0;
     width: 720px;
     height: 720px;
-    background-color: #cee6d0;
+    position: absolute;
+    left: 50%;
+    margin-left: -360px;
 }
 
 div.tile{
@@ -102,19 +103,22 @@ div.tileCorner{
 
 .canvas{
   z-index: 10;
-  left:24.7%;
-  top: 46px;
+  left: 50%;
+  margin-left: -364px;
+  top: 21px;
   position: absolute;
-  border: 5px solid brown;
+  border: 5px solid black;
   width: 720px;
   height: 720px;
 }
 
 .centreImage{
-  transform: scale3d(0.5,0.5,0.5);
+  width: 200px;
+  height: 200px;
   position: absolute;
-  left: 175px;
-  top: 180px;
+  margin-left: -100px;
+  left: 50%;
+  top: 260px;
 }
 
 img.cornerImage{
@@ -206,4 +210,18 @@ img.cornerImage{
   width: 50px;
   height: 50px;
   left: 0px;
+}
+
+.mostRecentAction{
+  position: relative;
+  background-color: white;
+
+  width: 520px;
+  height: 50px;
+  position: absolute;
+  left: 50%;
+  margin-left: -260px;
+  top: 15%;
+  z-index: 15;
+  text-align: center;
 }
