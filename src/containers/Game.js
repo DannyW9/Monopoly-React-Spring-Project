@@ -50,7 +50,7 @@ class Game extends Component {
     request.get('/squares')
     .then((data) => {
       for (let square of data) {
-        this.state.squares.push(new Square(square.name, square.squareNumber, square.setColor, square.purchasePrice, square.rent, square.h1, square.h2, square.h3, square.h4, square.hotel, square.buildCost))
+        this.state.squares.push(new Square(square.name, square.squareNumber, square.setColour, square.purchasePrice, square.rent, square.h1, square.h2, square.h3, square.h4, square.hotel, square.buildCost))
       }
     })
   }
