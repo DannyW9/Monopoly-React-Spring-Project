@@ -58,14 +58,20 @@ class RenderHelper {
     //Player on Go
     if(index == 0){
         return new Vec2(baseX + 80,baseY);
-    }else if (index <= 10) {//Player on bottom row
-          return new Vec2(baseX-((index-1)*tileWidth),baseY);
-    }else if (index <= 20) {//Player on left column
+    }else if (index < 10) {//Player on bottom row
+          return new Vec2(baseX-((index)*tileWidth),baseY);
+    }else if (index == 10) {//Player is on JAIL
         return new Vec2(10,baseY-((index-10)*(tileWidth+2)));
-    }else if (index <= 30) {//Player on top row
-      return new Vec2(20+(index-20)*tileWidth,10);
+    }else if (index < 20) {//Player on left column
+        return new Vec2(10,baseY-((index-10)*(tileWidth+2)));
+    }else if (index == 20) {//Player on FREE PARKING
+        return new Vec2(10,10);
+    }else if (index < 30) {//Player on top row
+      return new Vec2(40+(index-20)*tileWidth,10);
+    }else if (index == 30) {//Player on GO TO JAIL
+        return new Vec2(baseX + 80,10);
     }else if (index <= 40) {//Player on right column
-      return new Vec2(baseX+80,10+((index-30)*tileWidth));
+      return new Vec2(baseX+80, 40 + ((index-30)*tileWidth));
     }
 
   }
@@ -73,7 +79,7 @@ class RenderHelper {
   clearCanvas(){
     this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
   }
-
+  
   renderPlayersFromProps(playerprops){
     this.clearCanvas();
     for(let i=0; i<playerprops.length;i++){

@@ -21,7 +21,7 @@ class Board extends Component {
   }
 
   handleLoading(){
-    return <p> Loading HOOKS???</p>
+    return <p className="tileText"> Waiting for Game to Start </p>
   }
 
 

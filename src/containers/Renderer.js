@@ -54,6 +54,7 @@ class Renderer extends Component {
       if(this.playerPosChanged()){
           this.state.renderer.renderPlayersFromProps(this.props.players);
       }
+
     }
 
     return (
