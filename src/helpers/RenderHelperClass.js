@@ -11,18 +11,22 @@ class RenderHelper {
       this.players = [this.p1,this.p2,this.p3,this.p4];
   }
 
-  moveAndRenderLoop(){
+  testFunction(){
+
+  }
+
+  moveAndRenderLoop(playerIndex, targetIndex){
     //check
 
-    if(/*Player pos != CurrentPos*/true){
+    if(/*this.players[playerIndex] < this.props.players[playerIndex].position*/true){
       //clear
       this.clearCanvas();
 
       //move
-      this.p1 += 1;
+      this.players[playerIndex] += 1;
 
       //render
-      this.renderPlayer(this.p1, "pink");
+      this.renderAllPlayers();
 
       //wait - loop
       setTimeout(() => {
@@ -33,7 +37,6 @@ class RenderHelper {
   }
 
   renderPlayer(positionIndex, color, offset){
-    //console.log(player1Test.positionIndex);
     let position = this.calculateCoordinates(positionIndex);
     this.ctx.beginPath();
     this.ctx.arc(position.x + 25 + offset, position.y + 25 + offset, 15, 0, 2 * Math.PI);
@@ -46,12 +49,6 @@ class RenderHelper {
 
   }
 
-  renderAllPlayers(){
-    for(let i=0; i<4;i++){
-      this.renderPlayer(this.players[i], "blue", i*5);
-    }
-  }
-
   calculateCoordinates(index){
     //position 1
     const baseX = 570;
@@ -61,22 +58,34 @@ class RenderHelper {
     //Player on Go
     if(index == 0){
         return new Vec2(baseX + 80,baseY);
-    }else if (index <= 10) {//Player on bottom row
-          return new Vec2(baseX-((index-1)*tileWidth),baseY);
-    }else if (index <= 20) {//Player on left column
+    }else if (index < 10) {//Player on bottom row
+          return new Vec2(baseX-((index)*tileWidth),baseY);
+    }else if (index == 10) {//Player is on JAIL
         return new Vec2(10,baseY-((index-10)*(tileWidth+2)));
-    }else if (index <= 30) {//Player on top row
-      return new Vec2(20+(index-20)*tileWidth,10);
+    }else if (index < 20) {//Player on left column
+        return new Vec2(10,baseY-((index-10)*(tileWidth+2)));
+    }else if (index == 20) {//Player on FREE PARKING
+        return new Vec2(10,10);
+    }else if (index < 30) {//Player on top row
+      return new Vec2(40+(index-20)*tileWidth,10);
+    }else if (index == 30) {//Player on GO TO JAIL
+        return new Vec2(baseX + 80,10);
     }else if (index <= 40) {//Player on right column
-      return new Vec2(baseX+80,10+((index-30)*tileWidth));
+      return new Vec2(baseX+80, 40 + ((index-30)*tileWidth));
     }
-
-
 
   }
 
   clearCanvas(){
     this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
+  }
+  
+  renderPlayersFromProps(playerprops){
+    this.clearCanvas();
+    for(let i=0; i<playerprops.length;i++){
+      //Using local players to position and props players for colour
+      this.renderPlayer(playerprops[i].position, playerprops[i].color, i*10);
+    }
   }
 
 }

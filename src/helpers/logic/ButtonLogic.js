@@ -7,13 +7,15 @@ const buttonLogic ={
 
   checkIfCurrentGame(noOfPlayers, method) {
     if (noOfPlayers === 0){
-      return <button onClick={method}>Start New Game </button>
+      return <button className="startNewGame" onClick={method}>Start New Game </button>
     }
   },
 
   checkIfCanRoll(props, method){
     if (!props.rolled){
-      return <button onClick={method}> Roll Dice </button>
+      return <button className="rolldicebutton" onClick={method}> Roll Dice </button>
+    }else{
+      return <button className="rolldicebutton" disabled onClick={method}> Roll Dice </button>
     }
   },
 

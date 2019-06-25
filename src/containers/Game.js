@@ -1,9 +1,13 @@
 import React, {Component, useState}  from 'react';
-import Board from '../containers/Board';
-import Player from '../models/Player';
-import PlayerStatus from '../components/PlayerStatus';
-import buttonLogic from '../helpers/logic/ButtonLogic';
 import Card from '../models/Card';
+import Square from '../models/Square';
+import Player from '../models/Player';
+import Board from '../containers/Board';
+import PlayerStatus from '../components/PlayerStatus';
+import PlayerInterface from '../components/PlayerInterface';
+import buttonLogic from '../helpers/logic/ButtonLogic';
+import displayLogic from '../helpers/logic/DisplayLogic';
+import Request from '../helpers/Request';
 
 class Game extends Component {
 
@@ -19,9 +23,7 @@ class Game extends Component {
       doubleCount: 0,
       activePlayer: null,
       activePlayerIndex: null,
-      players: [
-        new Player('Danny', 'red')
-      ]
+      players: []
     }
 
     this.setMoveValue = this.setMoveValue.bind(this);
@@ -32,22 +34,36 @@ class Game extends Component {
     this.updateActivePlayer = this.updateActivePlayer.bind(this);
   }
 
+  componentDidMount(){
+    const request = new Request();
+
+    request.get('/cards')
+    .then((data) => {
+      for (let card of data) {
+        if(card.name === "Chance"){
+          this.state.chanceCards.push(new Card(card.name, card.information, card.method, card.adjuster))
+        } else {
+          this.state.chestCards.push(new Card(card.name, card.information, card.method, card.adjuster))
+        }
+      }
+    })
+
+    request.get('/squares')
+    .then((data) => {
+      for (let square of data) {
+        this.state.squares.push(new Square(square.name, square.squareNumber, square.setColour, square.purchasePrice, square.rent, square.h1, square.h2, square.h3, square.h4, square.hotel, square.buildCost))
+      }
+    })
+  }
+
+
+
   startNewGame(){
-    // this.setState({
-    //   players: []
-    // })
+
+    // METHOD TO SHUFFLE CARD ARRAYS
 
     this.state.players.push(new Player('Danny', 'red'))
     this.state.players.push(new Player('Lindsey', 'orange'))
-
-    this.state.chanceCards.push(new Card('Chance', 'Speeding Fine, pay £15.', 2, 15))
-    this.state.chanceCards.push(new Card("Chance", "Advance to Trafalgar Square. If you pass go, collect £200.", 3, 24))
-    this.state.chanceCards.push(new Card("Chance", "You have been elected chairman of the board. Receive £50.", 1, 50))
-
-    this.state.chestCards.push(new Card("Community Chest", "Doctors Fee. pay £50.", 2, 50))
-    this.state.chestCards.push(new Card("Community Chest", "Life Insurance matures. Collect £100.", 1, 100))
-    this.state.chestCards.push(new Card("Community Chest", "It is your birthday. Collect £10 from every player.", 9, 10))
-
 
     this.setState({
       moveValue: null,
@@ -96,6 +112,7 @@ render(){
 const state = this.state;
 
 let newGameButton = buttonLogic.checkIfCurrentGame(state.players.length, this.startNewGame);
+let playerStatus = displayLogic.checkIfStatusCanDisplay(state)
 
   return(
     <div>
@@ -113,10 +130,8 @@ let newGameButton = buttonLogic.checkIfCurrentGame(state.players.length, this.st
         players={state.players}
         />
       {newGameButton}
-      <PlayerStatus
-        players={state.players}
-        activePlayer={state.activePlayer}
-      />
+      {playerStatus}
+
     </div>
   )
 }
