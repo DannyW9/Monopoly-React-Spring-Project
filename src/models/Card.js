@@ -23,7 +23,7 @@ class Card {
       player.position -= 3
     } else {
             // Check if this will make the player pass go
-      if ((player.position > this.adjustor) && (this.adjustor != 10)){
+      if ((player.position > this.adjustor) && (this.adjustor !== 10)){
         player.money += 200
       }
       // Move to specified position
@@ -41,35 +41,35 @@ class Card {
 
 // STILL NEED TO ADD DOUBLE RENT
   moveToStation(player){
-    let pos = player.position
+    // let pos = player.position
 
-    if (pos < 15){
-      pos = 15
-    } else if (15 <= pos < 25) {
-      pos = 25
-    } else if (pos >= 35) {
-      pos = 5
+    if (player.position < 15){
+      player.position = 15
+    } else if (player.position >= 15 && player.position < 25) {
+      player.position = 25
+    } else if (player.position >= 35) {
+      player.position = 5
       player.money += 200
     }
   }
 
 // STILL NEED TO ADD INCREASED RENT
   moveToUtility(player){
-    let pos = player.position
+    // let pos = player.position
 
-    if (pos < 12){
-      pos = 12
-    } else if (12 <= pos < 28) {
-      pos = 28
-    } else if (pos >= 28) {
-      pos = 12
+    if (player.position < 12){
+      player.position = 12
+    } else if (player.position >= 12 && player.position < 28) {
+      player.position = 28
+    } else if (player.position >= 28) {
+      player.position = 12
       player.money += 200
     }
   }
 
   giveToPlayers(player, players){
-    for (var owedPlayer in players) {
-      if (owedPlayer != player) {
+    for (let owedPlayer in players) {
+      if (owedPlayer !== player) {
         owedPlayer.money += this.adjustor
         player.money -= this.adjustor
       }
@@ -78,36 +78,48 @@ class Card {
 
   receiveFromPlayers(player, players){
     for (var debtPlayer in players) {
-      if (debtPlayer != player) {
+      if (debtPlayer !== player) {
         debtPlayer.money -= this.adjustor
         player.money += this.adjustor
       }
     }
   }
 
-  determineMethod(player, players, cardMethod){
-    switch(cardMethod){
+  determineMethod(player, players){
+    switch(this.method){
       case 1:
       this.addMoney(player)
+      break;
       case 2:
       this.subtractMoney(player)
+      break;
       case 3:
       this.movePlayer(player)
+      break;
       case 4:
       this.addGoojfCard(player)
+      break;
       case 5:
       this.performRepairs(player)
+      break;
       case 6:
       this.moveToStation(player)
+      break;
       case 7:
       this.moveToUtility(player)
+      break;
       case 8:
       this.giveToPlayers(player, players)
+      break;
       case 9:
       this.receiveFromPlayers(player, players)
     }
     alert(this.text)
   }
+
+  // applyMethod(player){
+  //   this.lookupMethod()
+  // }
 
 }
 
