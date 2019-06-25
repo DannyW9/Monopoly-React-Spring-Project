@@ -61,7 +61,7 @@ class Game extends Component {
 
 
   startNewGame(){
-    this.state.players.push(new Player('Danny', '#FD0114'))
+    this.state.players.push(new Player('Danny', '#01E2FD'))
     this.state.players.push(new Player('Lindsey', '#75FF33'))
     this.state.players.push(new Player('Calum', '#FD6101'))
     this.state.players.push(new Player('Pablo','#BE33FF'))
