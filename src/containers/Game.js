@@ -60,8 +60,10 @@ class Game extends Component {
 
 
   startNewGame(){
-    this.state.players.push(new Player('Danny', 'red'))
-    this.state.players.push(new Player('Lindsey', 'orange'))
+    this.state.players.push(new Player('Danny', '#FD0114'))
+    this.state.players.push(new Player('Lindsey', '#75FF33'))
+    this.state.players.push(new Player('Calum', '#FD6101'))
+    this.state.players.push(new Player('Pablo','#BE33FF'))
 
     this.setState({
       moveValue: null,
