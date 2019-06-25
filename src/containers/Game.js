@@ -7,6 +7,7 @@ import PlayerStatus from '../components/PlayerStatus';
 import PlayerInterface from '../components/PlayerInterface';
 import buttonLogic from '../helpers/logic/ButtonLogic';
 import displayLogic from '../helpers/logic/DisplayLogic';
+import actionLogic from '../helpers/logic/ActionLogic';
 import Request from '../helpers/Request';
 
 class Game extends Component {
@@ -89,6 +90,7 @@ class Game extends Component {
     // Double will be used to check if the player can leave jail once implemented
     updatePlayerPosition(moveValue, double){
       this.state.activePlayer.updatePosition(moveValue)
+      actionLogic.checkCurrentAction(this.state)
     }
 
     updateActivePlayer(){
