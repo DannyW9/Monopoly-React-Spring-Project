@@ -141,6 +141,12 @@ class Game extends Component {
       activePlayer.buyProperty(currentProperty)
       currentProperty.owner = activePlayer
       this.setState({activePlayer: activePlayer});
+
+      this.updateMessagePropertyBought(currentProperty);
+    }
+
+    updateMessagePropertyBought(currentProperty){
+      this.updateMessage(this.state.activePlayer.name +  " bought " + currentProperty.name);
     }
 
     getActivePlayer(){
