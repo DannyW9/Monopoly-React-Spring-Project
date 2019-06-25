@@ -5,7 +5,9 @@ import Player from '../models/Player';
 import Board from '../containers/Board';
 import PlayerStatus from '../components/PlayerStatus';
 import PlayerInterface from '../components/PlayerInterface';
+import HoverZoom from '../components/HoverZoom';
 import buttonLogic from '../helpers/logic/ButtonLogic';
+import Vec2 from '../helpers/Vec2';
 import displayLogic from '../helpers/logic/DisplayLogic';
 import actionLogic from '../helpers/logic/ActionLogic';
 import Request from '../helpers/Request';
@@ -25,7 +27,8 @@ class Game extends Component {
       activePlayer: null,
       activePlayerIndex: null,
       players: [],
-      mostRecentAction: ""
+      mostRecentAction: "",
+      mouseVec: new Vec2(0,0)
     }
 
     this.setMoveValue = this.setMoveValue.bind(this);
@@ -90,74 +93,79 @@ class Game extends Component {
 
   }
 
-    setMoveValue(newValue){
-      this.updateMessage(this.generateMoveString(newValue))
+  setMoveValue(newValue){
+    this.updateMessage(this.generateMoveString(newValue))
+  }
+
+  generateMoveString(moveCount){
+    return this.getActivePlayer().name + " moved " + moveCount + " spaces, landing on ???";
+  }
+
+  updateRolled(){
+    this.setState({rolled: true})
+  }
+
+  updateDoubleCount(newValue){
+    this.setState({doubleCount: this.state.doubleCount + newValue})
+  }
+
+  // Double will be used to check if the player can leave jail once implemented
+  updatePlayerPosition(moveValue, double){
+    this.state.activePlayer.updatePosition(moveValue)
+    actionLogic.checkCurrentAction(this.state)
+  }
+
+  updateActivePlayer(){
+    if(this.state.rolled){
+      const newIndex = (this.state.activePlayerIndex +1) % (this.state.players.length)
+      this.setState({
+        activePlayer: this.state.players[newIndex],
+        activePlayerIndex: newIndex,
+        moveValue: null,
+        rolled: false
+      },() => {
+           this.updateMessageActivePlayer(this.getActivePlayer())
+      })
     }
+  }
 
-    generateMoveString(moveCount){
-      return this.getActivePlayer().name + " moved " + moveCount + " spaces, landing on ???";
+  updateMessageActivePlayer(newPlayer){
+    this.updateMessage(this.generateNewTurnString(newPlayer))
+  }
+
+  generateNewTurnString(newPlayer){
+    return newPlayer.name + "'s turn! "
+  }
+
+
+  purchaseProperty(){
+    let activePlayer = this.state.activePlayer
+    let currentProperty = this.state.squares[activePlayer.position]
+
+    activePlayer.properties.push(currentProperty)
+    activePlayer.buyProperty(currentProperty)
+    currentProperty.owner = activePlayer
+    this.setState({activePlayer: activePlayer});
+
+    this.updateMessagePropertyBought(currentProperty);
+  }
+
+  updateMessagePropertyBought(currentProperty){
+    this.updateMessage(this.state.activePlayer.name +  " bought " + currentProperty.name);
+  }
+
+  getActivePlayer(){
+    return this.state.players[this.state.activePlayerIndex];
+  }
+
+  handleMouseMove(event){
+    console.dir(document.elementFromPoint(event.clientX,event.clientY));
+    if(document.elementFromPoint(event.clientX,event.clientY).className == "tileInfo"){
+      this.setState({currentTileSelected : document.elementFromPoint(event.clientX,event.clientY)})
     }
+    this.setState({mouseVec : new Vec2(event.clientX, event.clientY)})
 
-    updateRolled(){
-      this.setState({rolled: true})
-    }
-
-    updateDoubleCount(newValue){
-      this.setState({doubleCount: this.state.doubleCount + newValue})
-    }
-
-    // Double will be used to check if the player can leave jail once implemented
-    updatePlayerPosition(moveValue, double){
-      this.state.activePlayer.updatePosition(moveValue)
-      actionLogic.checkCurrentAction(this.state)
-    }
-
-    updateActivePlayer(){
-      if(this.state.rolled){
-        const newIndex = (this.state.activePlayerIndex +1) % (this.state.players.length)
-        this.setState({
-          activePlayer: this.state.players[newIndex],
-          activePlayerIndex: newIndex,
-          moveValue: null,
-          rolled: false
-        },() => {
-             this.updateMessageActivePlayer(this.getActivePlayer())
-        })
-      }
-    }
-
-    updateMessageActivePlayer(newPlayer){
-      this.updateMessage(this.generateNewTurnString(newPlayer))
-    }
-
-    generateNewTurnString(newPlayer){
-      return newPlayer.name + "'s turn! "
-    }
-
-
-    purchaseProperty(){
-      let activePlayer = this.state.activePlayer
-      let currentProperty = this.state.squares[activePlayer.position]
-
-      activePlayer.properties.push(currentProperty)
-      activePlayer.buyProperty(currentProperty)
-      currentProperty.owner = activePlayer
-      this.setState({activePlayer: activePlayer});
-
-      this.updateMessagePropertyBought(currentProperty);
-    }
-
-    updateMessagePropertyBought(currentProperty){
-      this.updateMessage(this.state.activePlayer.name +  " bought " + currentProperty.name);
-    }
-
-    getActivePlayer(){
-      return this.state.players[this.state.activePlayerIndex];
-    }
-
-
-
-
+  }
 
 render(){
 
@@ -167,10 +175,11 @@ let newGameButton = buttonLogic.checkIfCurrentGame(state.players.length, this.st
 let playerStatus = displayLogic.checkIfStatusCanDisplay(state)
 
   return(
-    <div>
+    <div onMouseMove={this.handleMouseMove()}>
     <div className="mostRecentAction">
     <p>{this.state.mostRecentAction}</p>
     </div>
+      <HoverZoom mousePosition={this.state.currentTileSelected}/>
       <Board
         squares={state.squares}
         moveValue={state.moveValue}
