@@ -24,7 +24,8 @@ class Game extends Component {
       doubleCount: 0,
       activePlayer: null,
       activePlayerIndex: null,
-      players: []
+      players: [],
+      mostRecentAction: ""
     }
 
     this.setMoveValue = this.setMoveValue.bind(this);
@@ -34,6 +35,7 @@ class Game extends Component {
     this.startNewGame = this.startNewGame.bind(this);
     this.updateActivePlayer = this.updateActivePlayer.bind(this);
     this.purchaseProperty = this.purchaseProperty.bind(this);
+    this.updateMessage = this.updateMessage.bind(this);
   }
 
   componentDidMount(){
@@ -58,7 +60,9 @@ class Game extends Component {
     })
   }
 
-
+  updateMessage(inMesage){
+    this.setState({mostRecentAction : inMesage })
+  }
 
   startNewGame(){
     this.state.players.push(new Player('Danny', '#01E2FD'))
@@ -87,7 +91,11 @@ class Game extends Component {
   }
 
     setMoveValue(newValue){
-      this.setState({moveValue: newValue})
+      this.updateMessage(this.generateMoveString(newValue))
+    }
+
+    generateMoveString(moveCount){
+      return this.getActivePlayer().name + " moved " + moveCount + " spaces, landing on ???";
     }
 
     updateRolled(){
@@ -112,9 +120,20 @@ class Game extends Component {
           activePlayerIndex: newIndex,
           moveValue: null,
           rolled: false
-         })
+        },() => {
+             this.updateMessageActivePlayer(this.getActivePlayer())
+        })
       }
     }
+
+    updateMessageActivePlayer(newPlayer){
+      this.updateMessage(this.generateNewTurnString(newPlayer))
+    }
+
+    generateNewTurnString(newPlayer){
+      return newPlayer.name + "'s turn! "
+    }
+
 
     purchaseProperty(){
       let activePlayer = this.state.activePlayer
@@ -124,6 +143,16 @@ class Game extends Component {
       activePlayer.buyProperty(currentProperty)
       currentProperty.owner = activePlayer
       this.setState({activePlayer: activePlayer});
+
+      this.updateMessagePropertyBought(currentProperty);
+    }
+
+    updateMessagePropertyBought(currentProperty){
+      this.updateMessage(this.state.activePlayer.name +  " bought " + currentProperty.name);
+    }
+
+    getActivePlayer(){
+      return this.state.players[this.state.activePlayerIndex];
     }
 
 
@@ -139,6 +168,9 @@ let playerStatus = displayLogic.checkIfStatusCanDisplay(state)
 
   return(
     <div>
+    <div className="mostRecentAction">
+    <p>{this.state.mostRecentAction}</p>
+    </div>
       <Board
         squares={state.squares}
         moveValue={state.moveValue}
@@ -153,6 +185,7 @@ let playerStatus = displayLogic.checkIfStatusCanDisplay(state)
         players={state.players}
         purchaseProperty={this.purchaseProperty}
         activePlayer={state.activePlayer}
+        updateMessage={this.updateMessage}
         />
       {newGameButton}
       {playerStatus}

@@ -46,9 +46,6 @@ class Dice extends Component{
     }
   }
 
-
-
-
   render(){
 
     const diceStyle = {
