@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Square from '../components/Square'
 import Dice from '../components/Dice'
+import PlayerInterface from '../components/PlayerInterface'
 import BoardSide from '../components/BoardSide'
 import Renderer from '../containers/Renderer'
 import buttonLogic from '../helpers/logic/ButtonLogic'
@@ -75,8 +76,18 @@ class Board extends Component {
           {endButton}
           {this.renderInit}
         </div>
+        <div className="playerInterface">
+        <PlayerInterface />
+        {dice}
+        {endButton}
+        {this.renderInit}
+        </div>
+      </div>
+    )
+
       )
     }
+
   }
 }
 

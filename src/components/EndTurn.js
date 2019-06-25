@@ -14,7 +14,7 @@ class EndTurn extends Component {
 
   render(){
     return(
-      <button onClick={this.handleEndTurnClick}> End Turn </button>
+      <button className="endTurnButton" onClick={this.handleEndTurnClick}> End Turn </button>
     )
   }
 

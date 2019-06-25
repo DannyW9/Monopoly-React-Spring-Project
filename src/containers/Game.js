@@ -4,6 +4,7 @@ import Square from '../models/Square';
 import Player from '../models/Player';
 import Board from '../containers/Board';
 import PlayerStatus from '../components/PlayerStatus';
+import PlayerInterface from '../components/PlayerInterface';
 import buttonLogic from '../helpers/logic/ButtonLogic';
 import displayLogic from '../helpers/logic/DisplayLogic';
 import Request from '../helpers/Request';

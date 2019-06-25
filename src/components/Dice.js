@@ -52,9 +52,18 @@ class Dice extends Component{
   render(){
 
     const diceStyle = {
+      position: "absolute",
       border: '1px solid black',
       height: '50px',
-      width: '50px'
+      width: '50px',
+      left: '200px'
+    }
+    const diceStyle2 = {
+      position: "absolute",
+      border: '1px solid black',
+      height: '50px',
+      width: '50px',
+      left: '150px'
     }
 
     let rollDiceButton = buttonLogic.checkIfCanRoll(this.props, this.handleRollDiceClick)
@@ -63,7 +72,7 @@ class Dice extends Component{
       <div className="dice-div">
         {rollDiceButton}
         <img style={diceStyle} src={this.state.firstFace} />
-        <img style={diceStyle} src={this.state.secondFace} />
+        <img style={diceStyle2} src={this.state.secondFace} />
         <p>{this.state.rollMessage}</p>
         <p>{this.state.doubleRollMessage}</p>
       </div>
