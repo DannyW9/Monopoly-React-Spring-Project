@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import createRenderer from '../helpers/RendererHelper'
 import RenderHelper from '../helpers/RenderHelperClass'
 import tilePositions from '../helpers/tilePositions';
 import Vec2 from '../helpers/Vec2';

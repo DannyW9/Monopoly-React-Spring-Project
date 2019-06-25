@@ -59,7 +59,7 @@ class RenderHelper {
     if(index == 0){
         return new Vec2(baseX + 80,baseY);
     }else if (index < 10) {//Player on bottom row
-          return new Vec2(baseX-((index)*tileWidth),baseY);
+          return new Vec2(baseX-((index-1)*tileWidth),baseY);
     }else if (index == 10) {//Player is on JAIL
         return new Vec2(10,baseY-((index-10)*(tileWidth+2)));
     }else if (index < 20) {//Player on left column
@@ -79,7 +79,7 @@ class RenderHelper {
   clearCanvas(){
     this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
   }
-  
+
   renderPlayersFromProps(playerprops){
     this.clearCanvas();
     for(let i=0; i<playerprops.length;i++){
