@@ -48,14 +48,6 @@ class RenderHelper {
     this.ctx.stroke();
 
   }
-/*
-  renderAllPlayers(){
-    for(let i=0; i<this.players.length;i++){
-      console.log("PLAYERS POS", this.players[i]);
-      //Using local players to position and props players for colour
-      this.renderPlayer(this.players[i], "blue", i*10);
-    }
-  }*/
 
   calculateCoordinates(index){
     //position 1
@@ -76,8 +68,6 @@ class RenderHelper {
       return new Vec2(baseX+80,10+((index-30)*tileWidth));
     }
 
-
-
   }
 
   clearCanvas(){
@@ -86,9 +76,7 @@ class RenderHelper {
 
   renderPlayersFromProps(playerprops){
     this.clearCanvas();
-    console.log("PLAYER PROPS: ", playerprops);
     for(let i=0; i<playerprops.length;i++){
-      console.log("PLAYERS POS", playerprops[i]);
       //Using local players to position and props players for colour
       this.renderPlayer(playerprops[i].position, playerprops[i].color, i*10);
     }
