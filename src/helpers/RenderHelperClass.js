@@ -84,9 +84,11 @@ class RenderHelper {
     this.clearCanvas();
     for(let i=0; i<playerprops.length;i++){
       //Using local players to position and props players for colour
-      this.renderPlayer(playerprops[i].position, playerprops[i].color, i*10);
+      this.renderPlayer(playerprops[i].position, playerprops[i].color, i*4);
     }
   }
+
+
 
 }
 
