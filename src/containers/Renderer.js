@@ -26,8 +26,10 @@ class Renderer extends Component {
      const canvas = this.refs.canvas
      const ctx = canvas.getContext("2d")
      const renderer = new RenderHelper(canvas, ctx);
-     this.setState({renderer : renderer});
-     const testvec = new Vec2(1,2);
+     this.setState({renderer : renderer},() => {
+       this.state.renderer.renderPlayersFromProps(this.props.players)
+     });
+
   }
 
   renderPlayers(){
@@ -53,6 +55,7 @@ class Renderer extends Component {
       if(this.playerPosChanged()){
           this.state.renderer.renderPlayersFromProps(this.props.players);
       }
+
 
     }
 
