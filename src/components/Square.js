@@ -8,11 +8,43 @@ const Square = (props) => {
   }
 
   //if corner block
-  if(props.type){
+  if(props.type == "Corner"){
     return(
       //Switch statement for type of corner block
       <div style={{backgroundColor: "grey"}}  className="tileCorner">
       <img className="cornerImage" src={props.cornerImage} />
+      </div>
+    );
+  }
+
+  if(props.card.name == "Chance" || props.card.name == "Community Chest" ){
+    return(
+      <div className="tile">
+          <div className="tileInfo">
+            <p className="tileText">{props.card.name}</p>
+        </div>
+      </div>
+    );
+  }
+
+  if(props.card.setColor == "tax"){
+    return(
+      <div className="tile">
+          <div className="tileInfo">
+            <p className="tileText">{props.card.name}</p>
+            <p className="tileText">Pay: {props.card.rent}</p>
+        </div>
+      </div>
+    );
+  }
+
+  if(props.type == "non-set"){
+    return(
+      <div className="tile">
+          <div className="tileInfo">
+            <p className="tileText">{props.card.name}</p>
+            <p className="tileText">{props.card.purchasePrice}</p>
+        </div>
       </div>
     );
   }
@@ -39,6 +71,7 @@ const Square = (props) => {
         <div className="tileInfo">
           <p className="tileText">{props.card.name}</p>
           <p className="tileText">{props.card.price}</p>
+          <p className="tileText">{props.card.purchasePrice}</p>
       </div>
     </div>
   )
