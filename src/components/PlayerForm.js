@@ -40,14 +40,15 @@ class PlayerForm extends Component {
 
     return(
 
-      <form className = "player-form" onsubmit={this.handleSubmit}>
+      <form className = "player-form" value = "null" disabled onsubmit={this.handleSubmit}>
       <div>
       <input
       type = "text"
       placeholder="player1"
-      value={this.state.playerName}
+      value={this.state.playerName1}
       onChange={this.handlePlayerNameChange}/>
       <select>
+      <option disabled selected>Choose a colour</option>
       {colorOptions}
       </select>
       </div>
@@ -55,27 +56,31 @@ class PlayerForm extends Component {
       <div><input
       type = "text"
       placeholder="player2"
-      value={this.state.playerName}
+      value={this.state.playerName2}
       onChange={this.handlePlayerNameChange}/>
       <select>
+      <option disabled selected>Choose a colour</option>
       {colorOptions}
       </select></div>
 
       <div><input
       type = "text"
       placeholder="player3"
-      value={this.state.playerName}
+      value={this.state.playerName3}
       onChange={this.handlePlayerNameChange}/>
       <select>
+      <option disabled selected>Choose a colour</option>
       {colorOptions}
+      <option value = "null" disabled></option>
       </select></div>
 
       <div><input
       type = "text"
       placeholder="player4"
-      value={this.state.playerName}
+      value={this.state.playerName3}
       onChange={this.handlePlayerNameChange}/>
       <select>
+      <option disabled selected>Choose a colour</option>
       {colorOptions}
       </select></div>
 
