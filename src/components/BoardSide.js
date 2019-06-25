@@ -16,19 +16,33 @@ const BoardSide = (props) => {
     return false;
   }
 
+  function isColour(colour){
+    var style = new Option().style;
+    style.color = colour;
+    console.log(colour, style.color === colour);
+    return style.color == colour;
+  }
+
+  function handleSquare(square){
+    //Check if setColour != color
+    if(!isColour(square.setColor)){
+      return <Square card={square} type="non-set" />
+    }
+    //if not colour go to handle non setSqaure
+    return  <Square card={square}/>
+  }
+
+  function handleCorner(square){
+    return   <Square card={square} type={"Corner"} cornerImage={props.cornerImage} />
+  }
 
 	const squares = props.squares.map((square, index) => {
-    //CornerBlock
+    //Corner Square
     if(isCornerBlock(square)){
-      return (
-        <Square card={square} type={"Corner"} cornerImage={props.cornerImage} />
-      )
-    }else{
-      return (
-        <Square card={square}/>
-      )
+      return (handleCorner(square))
+    }else{ //Normal Square
+      return (handleSquare(square))
     }
-
 	})
 
 	return(
