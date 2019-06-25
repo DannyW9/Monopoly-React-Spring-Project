@@ -7,7 +7,7 @@ class PlayerForm extends Component {
     super(props);
     this.state= {
       playerName: "",
-      color: []
+      color: ["blue", "red", "orange", "green"]
     };
 
     this.handlePlayerNameChange = this.handlePlayerNameChange.bind(this);
@@ -32,19 +32,54 @@ class PlayerForm extends Component {
     this.setState({color: event.target.value});
   }
   render() {
+
+    const colorOptions = this.state.color.map((color, index) => {
+      return<option key={index} value={color}>{color}</option>
+
+    })
+
     return(
 
       <form className = "player-form" onsubmit={this.handleSubmit}>
+      <div>
       <input
       type = "text"
       placeholder="player1"
       value={this.state.playerName}
       onChange={this.handlePlayerNameChange}/>
-      <input
+      <select>
+      {colorOptions}
+      </select>
+      </div>
+
+      <div><input
       type = "text"
-      placeholder="select your colour"
-      value={this.state.color}
-      onChange={this.handleColorChange}/>
+      placeholder="player2"
+      value={this.state.playerName}
+      onChange={this.handlePlayerNameChange}/>
+      <select>
+      {colorOptions}
+      </select></div>
+
+      <div><input
+      type = "text"
+      placeholder="player3"
+      value={this.state.playerName}
+      onChange={this.handlePlayerNameChange}/>
+      <select>
+      {colorOptions}
+      </select></div>
+
+      <div><input
+      type = "text"
+      placeholder="player4"
+      value={this.state.playerName}
+      onChange={this.handlePlayerNameChange}/>
+      <select>
+      {colorOptions}
+      </select></div>
+
+
       <input type = "submit" value="enter"/>
       </form>
     );
