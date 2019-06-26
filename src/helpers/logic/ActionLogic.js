@@ -10,8 +10,16 @@ const actionLogic = {
       this.pickBonusCard(currentSquare, player, state)
     } else if (currentSquare.squareNumber === 30) {
       this.goToJail(player)
+    } else if (currentSquare.owner !== null && currentSquare.owner !== player) {
+      this.payRent(currentSquare, player)
     }
 
+  },
+
+  payRent(square, player){
+      // CHECK FOR FULL GROUP OWNED AT SOME POINT
+      player.payRent(square)
+      square.owner.receiveRent(square)
   },
 
   payTax(square, player){
