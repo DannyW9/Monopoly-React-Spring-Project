@@ -11,14 +11,6 @@ class Player {
     this.goojfCard = false
   }
 
-  // resetState(){
-  //   this.money = 1500
-  //   this.properties =[]
-  //   this.position = 0
-  //   this.jailStatus = false
-  //   this.timeInJail = 0
-  //   this.goojfCard = false
-  // }
 
 // Simple update Position without any Jail concerns
   updatePosition(moveValue){
@@ -33,7 +25,7 @@ class Player {
     }
   }
 
-// Simple rent without dealing with houses or full sets
+// Simple rent without dealing with housess
   payRent(property){
     if(property.fullSet === true){
       this.money -= (property.rents[property.rentLevel] * 2)
@@ -41,7 +33,7 @@ class Player {
     this.money -= property.rents[property.rentLevel]
   }
 
-// Simple rent without dealing with houses or full sets
+// Simple rent without dealing with houses
   receiveRent(property){
     if(property.fullSet === true){
       this.money += (property.rents[property.rentLevel] * 2)
@@ -55,8 +47,9 @@ class Player {
 
   buyProperty(square){
     this.money -= square.purchasePrice
+    this.properties.push(square)
     this.checkIfFullSetOwned(square);
-    console.log(this.partsOfSetOwned(square));
+
   }
 
   partsOfSetOwned(square){

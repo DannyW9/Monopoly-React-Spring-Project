@@ -146,7 +146,6 @@ class Game extends Component {
       let activePlayer = this.state.activePlayer
       let currentProperty = this.state.squares[activePlayer.position]
 
-      activePlayer.properties.push(currentProperty)
       activePlayer.buyProperty(currentProperty)
       currentProperty.owner = activePlayer
       this.setState({activePlayer: activePlayer});
