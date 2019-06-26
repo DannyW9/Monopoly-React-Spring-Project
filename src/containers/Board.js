@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Square from '../components/Square'
 import Dice from '../components/Dice'
 import PlayerInterface from '../components/PlayerInterface'
+import HoverZoom from '../components/HoverZoom'
 import BoardSide from '../components/BoardSide'
 import Renderer from '../containers/Renderer'
 import buttonLogic from '../helpers/logic/ButtonLogic'
@@ -12,8 +13,11 @@ class Board extends Component {
   constructor(props) {
     super(props);
     this.state ={
-      board: "bla bla"
+      board: "bla bla",
+      currentTileSelected : {}
     }
+
+    this.handleMouseMove = this.handleMouseMove.bind(this);
   }
 
   componentDidMount(){
@@ -24,6 +28,16 @@ class Board extends Component {
   handleLoading(){
     return <p className="tileText"> Waiting for Game to Start </p>
   }
+
+ handleMouseMove(event){
+   if(document.elementFromPoint(event.clientX,event.clientY).className == "tile"){
+     let tileIndex = document.elementFromPoint(event.clientX,event.clientY).title;
+     this.setState({currentTileSelected : this.props.squares[tileIndex]})
+   }
+ //  this.setState({mouseVec : new Vec2(event.clientX, event.clientY)})
+
+ }
+
 
 
   render(){
@@ -61,7 +75,8 @@ class Board extends Component {
       const rightrow = this.props.squares.slice(30,40);
 
       return(
-        <div>
+        <div onMouseMove={this.handleMouseMove}>
+          <HoverZoom currentTile={this.state.currentTileSelected}/>
           <Renderer players={this.props.players} board={this.boardElement} />
           <div ref="board" className="Board">
             <img className="centreImage" src="images/monopolyman.png"/>
