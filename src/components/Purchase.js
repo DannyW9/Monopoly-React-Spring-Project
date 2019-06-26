@@ -6,7 +6,6 @@ class Purchase extends Component{
   constructor(props){
     super(props)
     this.state = {
-      purchaseMessage: ""
     }
 
     this.handleBuyProperty = this.handleBuyProperty.bind(this)
@@ -14,7 +13,6 @@ class Purchase extends Component{
 
   handleBuyProperty(){
     this.props.purchaseProperty()
-    this.setState({purchaseMessage: "You purchased " + this.props.squares[this.props.activePlayer.position].name + " for £" + this.props.squares[this.props.activePlayer.position].purchasePrice})
   }
 
   render(){
@@ -24,7 +22,6 @@ class Purchase extends Component{
     return(
       <div>
         {purchaseButton}
-        <p>{this.state.purchaseMessage}</p>
       </div>
     )
   }
