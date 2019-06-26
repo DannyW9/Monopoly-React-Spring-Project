@@ -30,29 +30,29 @@ class Board extends Component {
   }
 
  handleMouseMove(event){
-   if(document.elementFromPoint(event.clientX,event.clientY).className == "tile"){
+   let elem = document.elementFromPoint(event.clientX,event.clientY);
+   if(elem.className == "tile"){
      let tileIndex = document.elementFromPoint(event.clientX,event.clientY).title;
      this.setState({currentTileSelected : this.props.squares[tileIndex]})
+   }else{
+     this.setState({currentTileSelected : null})
    }
  //  this.setState({mouseVec : new Vec2(event.clientX, event.clientY)})
 
  }
 
+  handleHoverComponent(){
+    console.log("CURRENT TILE: ", this.state.currentTileSelected);
+    if(this.state.currentTileSelected != null){
+      return <HoverZoom currentTile={this.state.currentTileSelected}/>
+    }else{
+      return <p>NO CURRENT TILE</p>
+    }
+  }
+
 
 
   render(){
-
-    const testCardB = {
-      price : 20,
-      name : "Brown Town",
-      color : "brown"
-    }
-
-    const testCardLB = {
-      price : 70,
-      name : "Lightblue Town",
-      color : "lightblue"
-    }
 
     let bottomrow = (<p>LOADING</p>);
     const go = "images/go.png";
@@ -63,6 +63,7 @@ class Board extends Component {
 
     let endButton = buttonLogic.checkIfTurnEnd(props)
     let dice = buttonLogic.checkIfGameStarted(props)
+    let hoverComponent = this.handleHoverComponent();
     //dice.props.mostRecentAction = this.props.mostRecentAction;
 
     if(this.props.squares.length <= 0){
@@ -74,9 +75,10 @@ class Board extends Component {
       const toprow = this.props.squares.slice(20,30);
       const rightrow = this.props.squares.slice(30,40);
 
+
       return(
         <div onMouseMove={this.handleMouseMove}>
-          <HoverZoom currentTile={this.state.currentTileSelected}/>
+          {hoverComponent}
           <Renderer players={this.props.players} board={this.boardElement} />
           <div ref="board" className="Board">
             <img className="centreImage" src="images/monopolyman.png"/>

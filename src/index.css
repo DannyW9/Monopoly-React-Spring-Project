@@ -260,8 +260,8 @@ img.cornerImage{
   background: white;
   width: 200px;
   height: 300px;
-  left: 460px;
-  top: 190px;
+  left: 380px;
+  top: 170px;
   z-index: 20;
   outline: 2px solid black;
   outline-offset: -12px;
@@ -281,10 +281,9 @@ img.cornerImage{
 
 .HoverZoomCardInfo{
   position: absolute;
-  background: white;
   width: 160px;
   height: 200px;
   left: 20px;
-  bottom: 20px;
+  top: 65px;
   z-index: 20;
 }

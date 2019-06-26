@@ -1,11 +1,6 @@
 import React from 'react';
 
 const Square = (props) => {
-  let propsTest = {
-    name: "Street Name",
-    price: 100,
-    color: "green"
-  }
 
   //if corner block
   if(props.type == "Corner"){

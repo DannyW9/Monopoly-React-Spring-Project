@@ -29,7 +29,6 @@ class PlayerInterface extends Component {
   render(){
 
     let propertyList = this.getPropertyList();
-    console.dir("prop list: ",propertyList);
     return(
       <div>
       <Purchase
