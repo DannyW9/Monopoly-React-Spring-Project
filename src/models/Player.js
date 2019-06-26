@@ -31,6 +31,9 @@ class Player {
       this.money -= (property.rents[property.rentLevel] * 2)
     } else if (property.setColor === "utility") {
       this.money -= (moveValue * property.rents[property.rentLevel])
+      console.log(moveValue);
+      console.log(property.rents[property.rentLevel]);
+      console.log((moveValue * property.rents[property.rentLevel]));
     } else {
       this.money -= property.rents[property.rentLevel]
     }

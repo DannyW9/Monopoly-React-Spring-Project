@@ -1,6 +1,6 @@
 const actionLogic = {
 
-  checkCurrentAction(state){
+  checkCurrentAction(state, moveValue){
     let currentSquare = state.squares[state.activePlayer.position]
     let player = state.activePlayer
 
@@ -11,13 +11,12 @@ const actionLogic = {
     } else if (currentSquare.squareNumber === 30) {
       this.goToJail(player)
     } else if (currentSquare.owner !== null && currentSquare.owner !== player) {
-      this.payRent(currentSquare, player, state.moveValue)
+      this.payRent(currentSquare, player, moveValue)
     }
 
   },
 
   payRent(square, player, moveValue){
-      // CHECK FOR FULL GROUP OWNED AT SOME POINT
       player.payRent(square, moveValue)
       square.owner.receiveRent(square, moveValue)
   },

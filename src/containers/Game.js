@@ -110,14 +110,8 @@ class Game extends Component {
     updatePlayerPosition(moveValue, double){
       this.state.activePlayer.updatePosition(moveValue)
       this.updateMessage(this.generateMoveString(moveValue))
-      actionLogic.checkCurrentAction(this.state)
+      actionLogic.checkCurrentAction(this.state, moveValue)
     }
-
-    // bankruptcyCheck(player){
-    //   if (player.money <= 0){
-    //     this.state.players.
-    //   }
-    // }
 
     updateActivePlayer(){
       if(this.state.rolled){
@@ -162,7 +156,7 @@ class Game extends Component {
     }
 
     updateMessagePropertyBought(currentProperty){
-      this.updateMessage(this.state.activePlayer.name +  " bought " + currentProperty.name);
+      this.updateMessage(this.state.activePlayer.name +  " bought " + currentProperty.name + " for £" + currentProperty.purchasePrice);
     }
 
     getActivePlayer(){
