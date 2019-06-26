@@ -11,15 +11,15 @@ const actionLogic = {
     } else if (currentSquare.squareNumber === 30) {
       this.goToJail(player)
     } else if (currentSquare.owner !== null && currentSquare.owner !== player) {
-      this.payRent(currentSquare, player)
+      this.payRent(currentSquare, player, state.moveValue)
     }
 
   },
 
-  payRent(square, player){
+  payRent(square, player, moveValue){
       // CHECK FOR FULL GROUP OWNED AT SOME POINT
-      player.payRent(square)
-      square.owner.receiveRent(square)
+      player.payRent(square, moveValue)
+      square.owner.receiveRent(square, moveValue)
   },
 
   payTax(square, player){

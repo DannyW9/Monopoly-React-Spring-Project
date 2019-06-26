@@ -26,19 +26,25 @@ class Player {
   }
 
 // Simple rent without dealing with housess
-  payRent(property){
+  payRent(property, moveValue){
     if(property.fullSet === true){
       this.money -= (property.rents[property.rentLevel] * 2)
+    } else if (property.setColor === "utility") {
+      this.money -= (moveValue * property.rents[property.rentLevel])
+    } else {
+      this.money -= property.rents[property.rentLevel]
     }
-    this.money -= property.rents[property.rentLevel]
   }
 
 // Simple rent without dealing with houses
-  receiveRent(property){
+  receiveRent(property, moveValue){
     if(property.fullSet === true){
       this.money += (property.rents[property.rentLevel] * 2)
+    } else if (property.setColor === "utility") {
+      this.money += (moveValue * property.rents[property.rentLevel])
+    } else {
+      this.money += property.rents[property.rentLevel]
     }
-    this.money += property.rents[property.rentLevel]
   }
 
   checkMoney(){

@@ -148,7 +148,6 @@ class Game extends Component {
 
       activePlayer.buyProperty(currentProperty)
       currentProperty.owner = activePlayer
-      this.setState({activePlayer: activePlayer});
       this.updateMessagePropertyBought(currentProperty);
 
       if(currentProperty.setColor === "utility"){
@@ -158,6 +157,8 @@ class Game extends Component {
           let set = activePlayer.partsOfSetOwned(currentProperty)
           set.forEach(station => station.rentLevel = (set.length -1))
       }
+
+      this.setState({activePlayer: activePlayer});
     }
 
     updateMessagePropertyBought(currentProperty){
