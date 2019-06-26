@@ -25,7 +25,8 @@ class Game extends Component {
       activePlayer: null,
       activePlayerIndex: null,
       players: [],
-      mostRecentAction: ""
+      mostRecentAction: "",
+      additionalAction: ""
     }
 
     this.setMoveValue = this.setMoveValue.bind(this);
@@ -95,7 +96,7 @@ class Game extends Component {
     }
 
     generateMoveString(moveCount){
-      return this.getActivePlayer().name + " moved " + moveCount + " spaces, landing on " + this.state.squares[this.state.activePlayer.position].name;
+      return this.getActivePlayer().name + " moved " + moveCount + " spaces, landing on " + this.state.squares[this.state.activePlayer.position].name + ". " + this.state.additionalAction;
     }
 
     updateRolled(){
@@ -109,8 +110,8 @@ class Game extends Component {
     // Double will be used to check if the player can leave jail once implemented
     updatePlayerPosition(moveValue, double){
       this.state.activePlayer.updatePosition(moveValue)
-      this.updateMessage(this.generateMoveString(moveValue))
       actionLogic.checkCurrentAction(this.state, moveValue)
+      this.updateMessage(this.generateMoveString(moveValue))
     }
 
     updateActivePlayer(){
@@ -120,7 +121,8 @@ class Game extends Component {
           activePlayer: this.state.players[newIndex],
           activePlayerIndex: newIndex,
           moveValue: null,
-          rolled: false
+          rolled: false,
+          additionalAction: ""
         },() => {
              this.updateMessageActivePlayer(this.getActivePlayer())
         })

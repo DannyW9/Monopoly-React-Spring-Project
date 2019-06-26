@@ -6,12 +6,14 @@ const actionLogic = {
 
     if (currentSquare.setColor === "tax"){
       this.payTax(currentSquare, player)
+      state.additionalAction = "Paid £" + currentSquare.rents[0] + " in taxes!"
     } else if (currentSquare.setColor === "communitychest" || currentSquare.setColor === "chance") {
       this.pickBonusCard(currentSquare, player, state)
     } else if (currentSquare.squareNumber === 30) {
       this.goToJail(player)
     } else if (currentSquare.owner !== null && currentSquare.owner !== player) {
       this.payRent(currentSquare, player, moveValue)
+      state.additionalAction = "Paid £" + currentSquare.rents[currentSquare.rentLevel] + " in rent to " + currentSquare.owner.name 
     }
 
   },
