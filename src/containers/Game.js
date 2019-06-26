@@ -162,6 +162,20 @@ class Game extends Component {
       return this.state.players[this.state.activePlayerIndex];
     }
 
+    returnMessage(){
+      if(this.state.players.length == 0){
+        return (
+        <p></p>
+        )
+      }else{
+        return(
+          <div className="mostRecentAction">
+          <p>{this.state.mostRecentAction}</p>
+          </div>
+        )
+      }
+    }
+
 
 
 
@@ -172,12 +186,11 @@ const state = this.state;
 
 let newGameButton = buttonLogic.checkIfCurrentGame(state.players.length, this.startNewGame);
 let playerStatus = displayLogic.checkIfStatusCanDisplay(state)
+let mostRecentActionDisplay = this.returnMessage();
 
   return(
     <div>
-    <div className="mostRecentAction">
-    <p>{this.state.mostRecentAction}</p>
-    </div>
+      {mostRecentActionDisplay}
       <Board
         squares={state.squares}
         moveValue={state.moveValue}

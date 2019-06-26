@@ -170,6 +170,10 @@ img.cornerImage{
   z-index: 10;
   height: 100px;
   width: 300px;
+
+  left: 50%;
+  margin-left: -150px;
+
 }
 
 .BuyProperty{
