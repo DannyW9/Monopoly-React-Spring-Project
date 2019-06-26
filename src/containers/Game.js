@@ -70,12 +70,6 @@ class Game extends Component {
     this.state.players.push(new Player('Calum', '#FD6101'))
     this.state.players.push(new Player('Pablo','#BE33FF'))
 
-    this.state.players[0].properties.push(this.state.squares[1])
-    this.state.players[0].properties.push(this.state.squares[6])
-    this.state.players[0].properties.push(this.state.squares[9])
-    this.state.players[0].properties.push(this.state.squares[13])
-    this.state.players[0].properties.push(this.state.squares[14])
-
     this.setState({
       moveValue: null,
       activePlayer: this.state.players[0],

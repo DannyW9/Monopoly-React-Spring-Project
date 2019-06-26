@@ -35,11 +35,17 @@ class Player {
 
 // Simple rent without dealing with houses or full sets
   payRent(property){
+    if(property.fullSet === true){
+      this.money -= (property.rents[property.rentLevel] * 2)
+    }
     this.money -= property.rents[property.rentLevel]
   }
 
 // Simple rent without dealing with houses or full sets
   receiveRent(property){
+    if(property.fullSet === true){
+      this.money += (property.rents[property.rentLevel] * 2)
+    }
     this.money += property.rents[property.rentLevel]
   }
 
