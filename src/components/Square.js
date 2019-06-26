@@ -38,13 +38,27 @@ const Square = (props) => {
     );
   }
 
-  if(props.type == "non-set"){
+  //Not owned
+  if(props.type == "non-set" && props.card.owner == null){
     return(
       <div className="tile">
           <div className="tileInfo">
             <p className="tileText">{props.card.name}</p>
             <p className="tileText">{props.card.purchasePrice}</p>
         </div>
+      </div>
+    );
+  }
+
+  //Owned
+  if(props.type == "non-set" && props.card.owner != null){
+    return(
+      <div className="tile">
+          <div className="tileInfo">
+            <p className="tileText">{props.card.name}</p>
+            <p className="tileText">{props.card.purchasePrice}</p>
+        </div>
+          <div style={{backgroundColor : props.card.owner.color}} className="propertyOwnedTab"></div>
       </div>
     );
   }
