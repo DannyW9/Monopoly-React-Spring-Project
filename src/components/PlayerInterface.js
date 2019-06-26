@@ -7,10 +7,19 @@ class PlayerInterface extends Component {
   constructor(props){
     super(props);
 
+
     this.handleManageProperty = this.handleManageProperty.bind(this);
+    this.getPropertyList = this.getPropertyList.bind(this);
   }
+  //Pass in current player
+  //Get list of props
+  //Display list
 
-
+  getPropertyList(){
+    return this.props.activePlayer.properties.map((property) => {
+      return <details><summary><li className="propertyListItem">{property.name}</li></summary><button>Mortgage</button></details>
+    })
+  }
 
   //Manage Prop
   handleManageProperty(){
@@ -19,16 +28,23 @@ class PlayerInterface extends Component {
 
   render(){
 
+    let propertyList = this.getPropertyList();
+    console.dir("prop list: ",propertyList);
     return(
       <div>
-      <p>PLAYER INTERFACE</p>
       <Purchase
         purchaseProperty={this.props.purchaseProperty}
         activePlayer={this.props.activePlayer}
         squares={this.props.squares}
         />
-      <button className="ManageProperty" onClick={this.handleManageProperty}>Manage Property</button>
+        <div className="propertyListDiv">
+          <ul className="propertyList">
+            <p className="propertyListText"> Properties </p>
+            {propertyList}
+          </ul>
+        </div>
       </div>
+
     )
   }
 
