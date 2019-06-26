@@ -55,7 +55,7 @@ class Game extends Component {
     request.get('/squares')
     .then((data) => {
       for (let square of data) {
-        this.state.squares.push(new Square(square.name, square.squareNumber, square.setColour, square.purchasePrice, square.rent, square.h1, square.h2, square.h3, square.h4, square.hotel, square.buildCost))
+        this.state.squares.push(new Square(square.name, square.squareNumber, square.setColour, square.purchasePrice, square.rents, square.buildCost))
       }
     })
   }
@@ -91,11 +91,11 @@ class Game extends Component {
   }
 
     setMoveValue(newValue){
-      this.updateMessage(this.generateMoveString(newValue))
+      this.setState({moveValue: newValue})
     }
 
     generateMoveString(moveCount){
-      return this.getActivePlayer().name + " moved " + moveCount + " spaces, landing on ???";
+      return this.getActivePlayer().name + " moved " + moveCount + " spaces, landing on " + this.state.squares[this.state.activePlayer.position].name;
     }
 
     updateRolled(){
@@ -109,8 +109,15 @@ class Game extends Component {
     // Double will be used to check if the player can leave jail once implemented
     updatePlayerPosition(moveValue, double){
       this.state.activePlayer.updatePosition(moveValue)
+            this.updateMessage(this.generateMoveString(moveValue))
       actionLogic.checkCurrentAction(this.state)
     }
+
+    // bankruptcyCheck(player){
+    //   if (player.money <= 0){
+    //     this.state.players.
+    //   }
+    // }
 
     updateActivePlayer(){
       if(this.state.rolled){

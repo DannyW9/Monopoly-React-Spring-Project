@@ -35,12 +35,12 @@ class Player {
 
 // Simple rent without dealing with houses or full sets
   payRent(property){
-    this.money -= property.rent
+    this.money -= property.rents[property.rentLevel]
   }
 
 // Simple rent without dealing with houses or full sets
   receiveRent(property){
-    this.money += property.rent
+    this.money += property.rents[property.rentLevel]
   }
 
   checkMoney(){
