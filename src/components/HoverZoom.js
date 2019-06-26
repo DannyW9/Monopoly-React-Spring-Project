@@ -6,8 +6,19 @@ class HoverZoom extends Component {
   //Use mouse hover?
 
   generateCardInfo(){
-    if(this.props.currentTile.rents == null){
-      return(<p>no info</p>)
+    if(this.props.currentTile.rents == null || this.props.currentTile.name.includes("Chance") || this.props.currentTile.name.includes("Community")){
+      return(<p></p>)
+    }
+
+    if(this.props.currentTile.name.includes("Station")){
+      return(
+        <div>
+        <p className="tileText">Rent _______________ £25 </p>
+        <p className="tileText">If 2 Stations are owned £50</p>
+        <p className="tileText">If 3 Stations are owned £100</p>
+        <p className="tileText">If 4 Stations are owned £200</p>
+        </div>
+      )
     }
 
     return(
