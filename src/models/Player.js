@@ -49,6 +49,7 @@ class Player {
 
   buyProperty(square){
     this.money -= square.purchasePrice
+    this.checkIfFullSetOwned(square);
     console.log(this.partsOfSetOwned(square));
   }
 
@@ -59,10 +60,18 @@ class Player {
   }
 
   checkIfFullSetOwned(square){
-    
-  }
+    let set = square.setColor
+    let owned = this.partsOfSetOwned(square)
+    let ownedSize = owned.length
 
+    if ((set === "darkblue" || set === "brown") && ownedSize === 2) {
+      owned.forEach(property => property.fullSet = true)
+    } else if (ownedSize === 3) {
+      owned.forEach(property => property.fullSet = true)
+      }
+    }
 
 }
+
 
 export default Player;
