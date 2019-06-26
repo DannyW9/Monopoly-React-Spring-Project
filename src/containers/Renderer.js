@@ -39,12 +39,10 @@ class Renderer extends Component {
   playerPosChanged(){
     let index = 0;
     if(this.state.playerPositions[0] != this.props.players[0].position){
-      console.log("PLAYER 0 MOVED TO: " + this.props.players[0].position);
       return true;
     }
 
     if(this.state.playerPositions[1] != this.props.players[1].position){
-      console.log("PLAYER 1 MOVED TO: " + this.props.players[1].position);
       return true;
     }
 
