@@ -35,11 +35,17 @@ class Player {
 
 // Simple rent without dealing with houses or full sets
   payRent(property){
+    if(property.fullSet === true){
+      this.money -= (property.rents[property.rentLevel] * 2)
+    }
     this.money -= property.rents[property.rentLevel]
   }
 
 // Simple rent without dealing with houses or full sets
   receiveRent(property){
+    if(property.fullSet === true){
+      this.money += (property.rents[property.rentLevel] * 2)
+    }
     this.money += property.rents[property.rentLevel]
   }
 
@@ -49,9 +55,29 @@ class Player {
 
   buyProperty(square){
     this.money -= square.purchasePrice
+    this.checkIfFullSetOwned(square);
+    console.log(this.partsOfSetOwned(square));
   }
 
+  partsOfSetOwned(square){
+    let set = square.setColor
+    let owned = this.properties.filter(property => property.setColor === set)
+    return owned
+  }
+
+  checkIfFullSetOwned(square){
+    let set = square.setColor
+    let owned = this.partsOfSetOwned(square)
+    let ownedSize = owned.length
+
+    if ((set === "darkblue" || set === "brown") && ownedSize === 2) {
+      owned.forEach(property => property.fullSet = true)
+    } else if (ownedSize === 3) {
+      owned.forEach(property => property.fullSet = true)
+      }
+    }
 
 }
+
 
 export default Player;

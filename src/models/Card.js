@@ -68,21 +68,21 @@ class Card {
   }
 
   giveToPlayers(player, players){
-    for (let owedPlayer in players) {
+    players.forEach((owedPlayer) => {
       if (owedPlayer !== player) {
         owedPlayer.money += this.adjustor
         player.money -= this.adjustor
       }
-    }
+    })
   }
 
   receiveFromPlayers(player, players){
-    for (var debtPlayer in players) {
+    players.forEach((debtPlayer) => {
       if (debtPlayer !== player) {
         debtPlayer.money -= this.adjustor
         player.money += this.adjustor
       }
-    }
+    })
   }
 
   determineMethod(player, players){
