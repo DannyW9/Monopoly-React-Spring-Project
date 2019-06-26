@@ -110,14 +110,8 @@ class Game extends Component {
     updatePlayerPosition(moveValue, double){
       this.state.activePlayer.updatePosition(moveValue)
       this.updateMessage(this.generateMoveString(moveValue))
-      actionLogic.checkCurrentAction(this.state)
+      actionLogic.checkCurrentAction(this.state, moveValue)
     }
-
-    // bankruptcyCheck(player){
-    //   if (player.money <= 0){
-    //     this.state.players.
-    //   }
-    // }
 
     updateActivePlayer(){
       if(this.state.rolled){
@@ -146,10 +140,8 @@ class Game extends Component {
       let activePlayer = this.state.activePlayer
       let currentProperty = this.state.squares[activePlayer.position]
 
-      activePlayer.properties.push(currentProperty)
       activePlayer.buyProperty(currentProperty)
       currentProperty.owner = activePlayer
-      this.setState({activePlayer: activePlayer});
       this.updateMessagePropertyBought(currentProperty);
 
       if(currentProperty.setColor === "utility"){
@@ -159,10 +151,12 @@ class Game extends Component {
           let set = activePlayer.partsOfSetOwned(currentProperty)
           set.forEach(station => station.rentLevel = (set.length -1))
       }
+
+      this.setState({activePlayer: activePlayer});
     }
 
     updateMessagePropertyBought(currentProperty){
-      this.updateMessage(this.state.activePlayer.name +  " bought " + currentProperty.name);
+      this.updateMessage(this.state.activePlayer.name +  " bought " + currentProperty.name + " for £" + currentProperty.purchasePrice);
     }
 
     getActivePlayer(){

@@ -11,14 +11,6 @@ class Player {
     this.goojfCard = false
   }
 
-  // resetState(){
-  //   this.money = 1500
-  //   this.properties =[]
-  //   this.position = 0
-  //   this.jailStatus = false
-  //   this.timeInJail = 0
-  //   this.goojfCard = false
-  // }
 
 // Simple update Position without any Jail concerns
   updatePosition(moveValue){
@@ -33,20 +25,29 @@ class Player {
     }
   }
 
-// Simple rent without dealing with houses or full sets
-  payRent(property){
+// Simple rent without dealing with housess
+  payRent(property, moveValue){
     if(property.fullSet === true){
       this.money -= (property.rents[property.rentLevel] * 2)
+    } else if (property.setColor === "utility") {
+      this.money -= (moveValue * property.rents[property.rentLevel])
+      console.log(moveValue);
+      console.log(property.rents[property.rentLevel]);
+      console.log((moveValue * property.rents[property.rentLevel]));
+    } else {
+      this.money -= property.rents[property.rentLevel]
     }
-    this.money -= property.rents[property.rentLevel]
   }
 
-// Simple rent without dealing with houses or full sets
-  receiveRent(property){
+// Simple rent without dealing with houses
+  receiveRent(property, moveValue){
     if(property.fullSet === true){
       this.money += (property.rents[property.rentLevel] * 2)
+    } else if (property.setColor === "utility") {
+      this.money += (moveValue * property.rents[property.rentLevel])
+    } else {
+      this.money += property.rents[property.rentLevel]
     }
-    this.money += property.rents[property.rentLevel]
   }
 
   checkMoney(){
@@ -55,8 +56,9 @@ class Player {
 
   buyProperty(square){
     this.money -= square.purchasePrice
+    this.properties.push(square)
     this.checkIfFullSetOwned(square);
-    console.log(this.partsOfSetOwned(square));
+
   }
 
   partsOfSetOwned(square){
