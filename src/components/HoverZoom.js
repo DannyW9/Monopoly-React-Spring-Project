@@ -7,11 +7,14 @@ class HoverZoom extends Component {
 
 
   render(){
-    console.log("MOUSE OVER:");
+    console.log("MOUSE OVER: ", this.props.currentTile );
+    if(this.props.currentTile == null){
+      return <p>No Card</p>
+    }
     return(
       <div className="HoverZoomCard">
-      <div className="HoverZoomCardTitleBox">
-      <p className="tileText" style={{fontSize: 20 + 'px'}} >Orange Town</p>
+      <div style={{background : this.props.currentTile.setColor}} className="HoverZoomCardTitleBox">
+      <p className="tileText" style={{fontSize: 20 + 'px'}} >{this.props.currentTile.name}</p>
       </div>
       <div className="HoverZoomCardInfo">
       <p className="tileText">Rent ______________ £12</p>

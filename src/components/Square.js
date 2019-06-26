@@ -11,7 +11,7 @@ const Square = (props) => {
   if(props.type == "Corner"){
     return(
       //Switch statement for type of corner block
-      <div style={{backgroundColor: "grey"}}  className="tileCorner">
+      <div id={props.squareNumber} style={{backgroundColor: "grey"}}  className="tileCorner">
       <img className="cornerImage" src={props.cornerImage} />
       </div>
     );
@@ -19,7 +19,7 @@ const Square = (props) => {
 
   if(props.card.name == "Chance" || props.card.name == "Community Chest" ){
     return(
-      <div className="tile">
+      <div id={props.squareNumber} className="tile">
           <div className="tileInfo">
             <p className="tileText">{props.card.name}</p>
         </div>
@@ -29,7 +29,7 @@ const Square = (props) => {
 
   if(props.card.setColor == "tax"){
     return(
-      <div className="tile">
+      <div id={props.card.squareNumber} className="tile">
           <div className="tileInfo">
             <p className="tileText">{props.card.name}</p>
             <p className="tileText">Pay: {props.card.rent}</p>
@@ -40,7 +40,7 @@ const Square = (props) => {
 
   if(props.type == "non-set"){
     return(
-      <div className="tile">
+      <div title={props.card.squareNumber} className="tile">
           <div className="tileInfo">
             <p className="tileText">{props.card.name}</p>
             <p className="tileText">{props.card.purchasePrice}</p>
@@ -52,7 +52,7 @@ const Square = (props) => {
   //if no card
   if(!props.card){
     return(
-      <div className="tile">
+      <div title={props.card.squareNumber}  className="tile">
         <div style={{backgroundColor: "pink"}}  className="tileColor">
           </div>
           <div className="tileInfo">
@@ -64,10 +64,9 @@ const Square = (props) => {
   }
 
   //Property is owned
-  //CHANGE TO !=
   if(props.card.owner != null){
     return(
-    <div className="tile">
+    <div title={props.card.squareNumber} className="tile">
       <div style={{backgroundColor: props.card.setColor}}  className="tileColor">
         </div>
         <div className="tileInfo">
@@ -84,7 +83,7 @@ const Square = (props) => {
 
   //property tile
   return(
-    <div className="tile">
+    <div title={props.card.squareNumber} className="tile">
       <div style={{backgroundColor: props.card.setColor}}  className="tileColor">
         </div>
         <div className="tileInfo">
@@ -92,6 +91,7 @@ const Square = (props) => {
           <p className="tileText">{props.card.price}</p>
           <p className="tileText">{props.card.purchasePrice}</p>
       </div>
+        <div className={props.squareNumber}></div>
     </div>
   )
 }

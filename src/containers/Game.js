@@ -5,9 +5,7 @@ import Player from '../models/Player';
 import Board from '../containers/Board';
 import PlayerStatus from '../components/PlayerStatus';
 import PlayerInterface from '../components/PlayerInterface';
-import HoverZoom from '../components/HoverZoom';
 import buttonLogic from '../helpers/logic/ButtonLogic';
-import Vec2 from '../helpers/Vec2';
 import displayLogic from '../helpers/logic/DisplayLogic';
 import actionLogic from '../helpers/logic/ActionLogic';
 import Request from '../helpers/Request';
@@ -27,8 +25,7 @@ class Game extends Component {
       activePlayer: null,
       activePlayerIndex: null,
       players: [],
-      mostRecentAction: "",
-      mouseVec: new Vec2(0,0)
+      mostRecentAction: ""
     }
 
     this.setMoveValue = this.setMoveValue.bind(this);
@@ -158,15 +155,6 @@ class Game extends Component {
     return this.state.players[this.state.activePlayerIndex];
   }
 
-  handleMouseMove(event){
-    console.dir(document.elementFromPoint(event.clientX,event.clientY));
-    if(document.elementFromPoint(event.clientX,event.clientY).className == "tileInfo"){
-      this.setState({currentTileSelected : document.elementFromPoint(event.clientX,event.clientY)})
-    }
-    this.setState({mouseVec : new Vec2(event.clientX, event.clientY)})
-
-  }
-
 render(){
 
 const state = this.state;
@@ -175,11 +163,10 @@ let newGameButton = buttonLogic.checkIfCurrentGame(state.players.length, this.st
 let playerStatus = displayLogic.checkIfStatusCanDisplay(state)
 
   return(
-    <div onMouseMove={this.handleMouseMove()}>
+    <div>
     <div className="mostRecentAction">
     <p>{this.state.mostRecentAction}</p>
     </div>
-      <HoverZoom mousePosition={this.state.currentTileSelected}/>
       <Board
         squares={state.squares}
         moveValue={state.moveValue}
