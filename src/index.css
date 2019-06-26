@@ -233,9 +233,13 @@ img.cornerImage{
 .propertyList{
   position: absolute;
   list-style-type: none;
-  padding: .5em .5em 0;
 }
 
 .propertyListItem{
-  left: 10px;
+
+}
+
+.propertyListText{
+  text-align: center;
+  font-size: 20px;
 }

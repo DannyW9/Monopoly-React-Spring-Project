@@ -39,6 +39,7 @@ class PlayerInterface extends Component {
         />
         <div className="propertyListDiv">
           <ul className="propertyList">
+            <p className="propertyListText"> Properties </p>
             {propertyList}
           </ul>
         </div>
