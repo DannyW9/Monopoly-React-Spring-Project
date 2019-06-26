@@ -42,7 +42,6 @@ class HoverZoom extends Component {
       return <p></p>
     }
 
-    console.log(this.props.currentTile);
     const info = this.generateCardInfo();
 
     return(

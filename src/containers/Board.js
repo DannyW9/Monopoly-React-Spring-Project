@@ -21,7 +21,6 @@ class Board extends Component {
   }
 
   componentDidMount(){
-    console.log(this.props.players);
     this.props.updateMessage("Player1's turn to roll!")
   }
 
@@ -42,7 +41,6 @@ class Board extends Component {
  }
 
   handleHoverComponent(){
-    console.log("CURRENT TILE: ", this.state.currentTileSelected);
     if(this.state.currentTileSelected != null){
       return <HoverZoom currentTile={this.state.currentTileSelected}/>
     }else{
