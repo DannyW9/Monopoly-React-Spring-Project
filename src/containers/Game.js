@@ -109,7 +109,7 @@ class Game extends Component {
     // Double will be used to check if the player can leave jail once implemented
     updatePlayerPosition(moveValue, double){
       this.state.activePlayer.updatePosition(moveValue)
-            this.updateMessage(this.generateMoveString(moveValue))
+      this.updateMessage(this.generateMoveString(moveValue))
       actionLogic.checkCurrentAction(this.state)
     }
 
@@ -150,8 +150,15 @@ class Game extends Component {
       activePlayer.buyProperty(currentProperty)
       currentProperty.owner = activePlayer
       this.setState({activePlayer: activePlayer});
-
       this.updateMessagePropertyBought(currentProperty);
+
+      if(currentProperty.setColor === "utility"){
+        let set = activePlayer.partsOfSetOwned(currentProperty)
+        set.forEach(utility => utility.rentLevel = (set.length - 1))
+      } else if (currentProperty.setColor === "station"){
+          let set = activePlayer.partsOfSetOwned(currentProperty)
+          set.forEach(station => station.rentLevel = (set.length -1))
+      }
     }
 
     updateMessagePropertyBought(currentProperty){
