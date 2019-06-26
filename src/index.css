@@ -11,3 +11,279 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+div.Board{
+    top: 25px;
+    border: 1px solid black;
+    background-color: #cee6d0;
+    width: 720px;
+    height: 720px;
+    position: absolute;
+    left: 50%;
+    margin-left: -360px;
+}
+
+div.tile{
+  pointer-events: initial;
+  position: relative;
+  border: 1px solid black;
+  width: 60px;
+  height: 80px;
+
+}
+
+p.tileText{
+    pointer-events: none;
+  color: black;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: center;
+}
+
+div.tileColor{
+    pointer-events: none;
+  position: relative;
+  border: 1px solid black;
+  width: 100%;
+  height: 20%;
+  top: 0;
+  left: -1px;
+}
+
+div.tileInfo{
+    pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  bottom: 38%;
+
+}
+
+div.BottomRow{
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  bottom: 0px;
+  right: 0px;
+}
+
+div.TopRow{
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  top: 0px;
+  left: 0px;
+}
+
+div.LeftColumn{
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  bottom: 278px;
+  left: -280px;
+  transform: rotate(90deg);
+}
+
+div.RightColumn{
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  top: 278px;
+  right: -280px;
+  transform: rotate(90deg);
+}
+
+div.tileCorner{
+    position: relative;
+    border: 1px solid black;
+    width: 80px;
+    height: 80px;
+    background-color: black;
+}
+
+.canvas{
+  z-index: 10;
+  left: 50%;
+  margin-left: -364px;
+  top: 21px;
+  position: absolute;
+  border: 5px solid black;
+  width: 720px;
+  height: 720px;
+  pointer-events: none;
+}
+
+.centreImage{
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  margin-left: -100px;
+  left: 50%;
+  top: 260px;
+}
+
+img.cornerImage{
+  width: 100%;
+  height: 100%;
+}
+
+.playerInterface{
+  position: absolute;
+  left: 0px;
+  top: 21px;
+  z-index: 10;
+  width: 270px;
+  height: 720px;
+  background-color: white;
+  border: 5px solid black;
+}
+
+.dice-div{
+  z-index: 10;
+}
+
+.rolldicebutton{
+  position: relative;
+  width: 110px;
+  height: 55px;
+  top: 0px;
+}
+
+.endTurn{
+  z-index: 10;
+  width: 110px;
+  height: 55px;
+}
+
+.endTurnButton{
+  z-index: 10;
+  width: 110px;
+  height: 55px;
+}
+
+.startNewGame{
+  position: absolute;
+  left: 550px;
+  top: 200px;
+  z-index: 10;
+  height: 100px;
+  width: 300px;
+
+  left: 50%;
+  margin-left: -150px;
+
+}
+
+.BuyProperty{
+  position: absolute;
+  width: 110px;
+  height: 55px;
+  top: 250px;
+}
+
+.ManageProperty{
+  position: absolute;
+  width: 110px;
+  height: 55px;
+  bottom: 0px;
+  left: 110px;
+
+}
+
+.propertyOwnedTab{
+  position: absolute;
+  width: 60px;
+  height: 10px;
+  background-color: pink;
+  bottom: 0px;
+}
+
+.playerStatus{
+  position: absolute;
+  top: 50px;
+  right:20px;
+  background-color: white;
+  border: 1px black solid;
+  width: 200px;
+}
+
+.colourDisplay{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  left: 0px;
+}
+
+.mostRecentAction{
+  position: relative;
+  background-color: rgba(255,255,255,0.5);
+  width: 520px;
+  height: 50px;
+  position: absolute;
+  left: 50%;
+  margin-left: -260px;
+  top: 15%;
+  z-index: 15;
+  text-align: center;
+  opacity: 50%;
+}
+
+.propertyListDiv{
+  position: absolute;
+  top: 300px;
+  left: 10px;
+  width: 200px;
+}
+
+.propertyList{
+  pointer-events: none;
+  position: absolute;
+  list-style-type: none;
+}
+
+.propertyListItem{
+
+}
+
+.propertyListText{
+  text-align: center;
+  font-size: 20px;
+}
+
+
+.HoverZoomCard{
+  position: absolute;
+  background: white;
+  width: 200px;
+  height: 300px;
+  left: 380px;
+  top: 170px;
+  z-index: 20;
+  outline: 2px solid black;
+  outline-offset: -12px;
+}
+
+
+.HoverZoomCardTitleBox{
+  position: absolute;
+  background: orange;
+  width: 160px;
+  height: 50px;
+  left: 20px;
+  top: 20px;
+  z-index: 20;
+  outline: 2px solid black;
+}
+
+.HoverZoomCardInfo{
+  position: absolute;
+  width: 160px;
+  height: 200px;
+  left: 20px;
+  top: 65px;
+  z-index: 20;
+}
