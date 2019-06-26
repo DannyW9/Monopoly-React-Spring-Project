@@ -6,16 +6,31 @@ const actionLogic = {
 
     if (currentSquare.setColor === "tax"){
       this.payTax(currentSquare, player)
-      state.additionalAction = "Paid £" + currentSquare.rents[0] + " in taxes!"
     } else if (currentSquare.setColor === "communitychest" || currentSquare.setColor === "chance") {
       this.pickBonusCard(currentSquare, player, state)
     } else if (currentSquare.squareNumber === 30) {
       this.goToJail(player)
     } else if (currentSquare.owner !== null && currentSquare.owner !== player) {
       this.payRent(currentSquare, player, moveValue)
-      state.additionalAction = "Paid £" + currentSquare.rents[currentSquare.rentLevel] + " in rent to " + currentSquare.owner.name 
     }
+    state.additionalAction = this.determineMessage(currentSquare, player, moveValue)
+  },
 
+  determineMessage(square, player, moveValue){
+
+    if (square.owner !== null && square.owner !== player) {
+      if (square.setColor === "utility") {
+        return "Paid £" + (square.rents[square.rentLevel] * moveValue) + " in rent to " + square.owner.name
+      }else{
+        return "Paid £" + square.rents[square.rentLevel] + " in rent to " + square.owner.name
+      }
+    }else if (square.setColor === "tax") {
+      return "Paid £" + square.rents[0] + " in taxes!"
+    }else if (square.squareNumber === 30) {
+      return player.name + " was sent directly to jail without passing GO!"
+    }else{
+      return ""
+    }
   },
 
   payRent(square, player, moveValue){
