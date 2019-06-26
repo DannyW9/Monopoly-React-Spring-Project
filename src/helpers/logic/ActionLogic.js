@@ -23,8 +23,8 @@ const actionLogic = {
   },
 
   payTax(square, player){
-    player.money -= square.rent
-    alert("Landed on " + square.name + "! Paid £" + square.rent + " in taxes.")
+    player.money -= square.rents[square.rentLevel]
+    alert("Landed on " + square.name + "! Paid £" + square.rents[square.rentLevel] + " in taxes.")
   },
 
   pickBonusCard(square, player, state){
