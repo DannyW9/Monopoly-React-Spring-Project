@@ -12,6 +12,7 @@ class Square {
     this.unmortgage = (this.mortgage * 1.1)
     this.owner = null
     this.rentLevel = 0
+    this.fullSet = false
 
   }
 

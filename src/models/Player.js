@@ -49,6 +49,17 @@ class Player {
 
   buyProperty(square){
     this.money -= square.purchasePrice
+    console.log(this.partsOfSetOwned(square));
+  }
+
+  partsOfSetOwned(square){
+    let set = square.setColor
+    let owned = this.properties.filter(property => property.setColor === set)
+    return owned
+  }
+
+  checkIfFullSetOwned(square){
+    
   }
 
 
