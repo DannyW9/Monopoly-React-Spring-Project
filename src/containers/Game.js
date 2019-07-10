@@ -109,6 +109,9 @@ class Game extends Component {
 
     // Double will be used to check if the player can leave jail once implemented
     updatePlayerPosition(moveValue, double){
+      this.setState({
+        additionalAction: ""
+      })
       this.state.activePlayer.updatePosition(moveValue)
       actionLogic.checkCurrentAction(this.state, moveValue)
       this.updateMessage(this.generateMoveString(moveValue))
@@ -122,7 +125,6 @@ class Game extends Component {
           activePlayerIndex: newIndex,
           moveValue: null,
           rolled: false,
-          additionalAction: ""
         },() => {
              this.updateMessageActivePlayer(this.getActivePlayer())
         })

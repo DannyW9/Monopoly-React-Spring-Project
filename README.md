@@ -1,3 +1,50 @@
+# Brief
+
+## MVP
+There is a board
+
+The board has “properties”, stations, utilities, taxes, chance & community chest and ‘corner’ squares.
+
+Create database for “squares” & ”Cards"
+
+Functioning dice
+
+Money
+
+Players - hold money, hold properties, buy properties, pay rent, receive rent, pay fines & receive income from ‘cards’, hold 
+
+“Get out of Jail free” cards.
+
+Follow “squares” instructions, e.g. Go to jail, pay income tax.
+
+
+## Extensions
+Sets of properties - changes rents, and allows for houses to be purchased.
+
+Show which player owns properties
+
+Hover - shows further property details
+
+Community Chest and Chance cards - All function
+
+Jail
+
+Utilities - special rules (4 or 10 times dice value)
+
+Stations - special rules (rent changes based on number owned)
+
+Buy houses and Hotels
+
+Trade properties
+
+Mortgage Properties
+
+## Advanced Extensions
+Different sets
+
+Optional rules - Free Parking, double money for landing on GO
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
