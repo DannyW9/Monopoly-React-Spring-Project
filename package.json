@@ -2,6 +2,7 @@
   "name": "monopoly",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "https://monopoly-calum-game.herokuapp.com/",
   "dependencies": {
     "caniuse-lite": "^1.0.30000974",
     "react": "^16.8.6",
