@@ -4,10 +4,11 @@
   "private": true,
   "dependencies": {
     "caniuse-lite": "^1.0.30000974",
+    "mocha": "^6.1.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1",
-    "mocha": "^6.1.4"
+    "react-router": "^5.0.1",
+    "react-scripts": "3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -15,11 +16,11 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage" : "https://monopoly-calum-game.herokuapp.com",
+  "homepage": "https://monopoly-calum-game.herokuapp.com",
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy": "https://monopoly-calum.herokuapp.com/",
+  "proxy": "http://localhost:5000/",
   "devDependencies": {
     "mocha": "^6.1.4"
   },
