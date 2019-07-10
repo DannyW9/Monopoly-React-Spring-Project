@@ -13,8 +13,7 @@ class Board extends Component {
   constructor(props) {
     super(props);
     this.state ={
-      board: "bla bla",
-      currentTileSelected : {}
+      currentTileSelected : {},
     }
 
     this.handleMouseMove = this.handleMouseMove.bind(this);
@@ -29,26 +28,23 @@ class Board extends Component {
   }
 
  handleMouseMove(event){
-   let elem = document.elementFromPoint(event.clientX,event.clientY);
+   let x = event.clientX;
+   let y = event.clientY;
+   let elem = document.elementFromPoint(x,y);
+
    if(elem.className == "tile"){
-     let tileIndex = document.elementFromPoint(event.clientX,event.clientY).title;
+     let tileIndex = elem.title;
      this.setState({currentTileSelected : this.props.squares[tileIndex]})
    }else{
      this.setState({currentTileSelected : null})
    }
- //  this.setState({mouseVec : new Vec2(event.clientX, event.clientY)})
-
  }
 
-  handleHoverComponent(){
+  getHoverComponent(){
     if(this.state.currentTileSelected != null){
       return <HoverZoom currentTile={this.state.currentTileSelected}/>
-    }else{
-      return <p>NO CURRENT TILE</p>
     }
   }
-
-
 
   render(){
 
@@ -61,8 +57,7 @@ class Board extends Component {
 
     let endButton = buttonLogic.checkIfTurnEnd(props)
     let dice = buttonLogic.checkIfGameStarted(props)
-    let hoverComponent = this.handleHoverComponent();
-    //dice.props.mostRecentAction = this.props.mostRecentAction;
+    let hoverComponent = this.getHoverComponent();
 
     if(this.props.squares.length <= 0){
       return this.handleLoading();
