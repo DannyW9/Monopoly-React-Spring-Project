@@ -21,25 +21,25 @@ const BoardSide = (props) => {
     return style.color == colour;
   }
 
-  function handleSquare(square){
+  function returnSquare(square){
     //Check if setColour != color
     if(!isColour(square.setColor)){
       return <Square key={square.squareNumber} card={square} type="non-set" />
     }
-    //if not colour go to handle non setSqaure
+    //if not colour go to return non setSqaure
     return  <Square key={square.squareNumber} card={square}/>
   }
 
-  function handleCorner(square){
+  function returnCorner(square){
     return   <Square key={square.squareNumber} card={square} type={"Corner"} cornerImage={props.cornerImage} />
   }
 
 	const squares = props.squares.map((square, index) => {
     //Corner Square
     if(isCornerBlock(square)){
-      return (handleCorner(square))
+      return (returnCorner(square))
     }else{ //Normal Square
-      return (handleSquare(square))
+      return (returnSquare(square))
     }
 	})
 
