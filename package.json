@@ -2,26 +2,38 @@
   "name": "monopoly",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+  "engines": {
+     "npm": "5.6.0",
+     "node": "9.11.1"
+   },
+   "devDependencies": {
+     "concurrently": "3.5.1",
+     "react-scripts": "^1.1.4"
+   },
+   "dependencies": {
+     "apollo-boost": "^0.1.27",
+     "autoprefixer-stylus": "0.14.0",
+     "axios": "^0.18.0",
+     "firebase": "^5.8.2",
+     "graphql": "^14.1.1",
+     "graphql-tag": "^2.10.1",
+     "prop-types": "^15.6.0",
+     "react": "^16.3.0-alpha.1",
+     "react-apollo": "^2.4.1",
+     "react-dom": "^16.3.0-alpha.1",
+     "react-router-dom": "^4.2.2",
+     "react-transition-group": "^2.2.1",
+     "stylus": "0.54.5"
+   },
+   "scripts": {
+     "start": "react-scripts start",
+     "build": "react-scripts build",
+     "eject": "react-scripts eject"
+   }
+ },
   "eslintConfig": {
     "extends": "react-app"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
   "proxy": "https://monopoly-calum.herokuapp.com/",
   "devDependencies": {
     "mocha": "^6.1.4"
