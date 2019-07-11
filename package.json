@@ -40,6 +40,7 @@
       "last 1 safari version"
     ]
   },
+  "proxy": "https://monopoly-calum.herokuapp.com" ,
   "buildpacks": [
     {
       "url": "https://github.com/mars/create-react-app-buildpack"
