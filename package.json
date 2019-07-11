@@ -21,7 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://serene-wave-60715.herokuapp.com/",
+  "homepage": "https://monopoly-front.herokuapp.com",
   "eslintConfig": {
     "extends": "react-app"
   },
