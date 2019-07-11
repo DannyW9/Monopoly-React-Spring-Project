@@ -21,7 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://serene-wave-60715.herokuapp.com",
+  "homepage": "https://serene-wave-60715.herokuapp.com/",
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -39,5 +39,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "buildpacks": [
+    {
+      "url": "https://github.com/mars/create-react-app-buildpack"
+    }
+  ]
 }
