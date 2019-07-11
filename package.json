@@ -21,7 +21,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://monopoly-front.herokuapp.com",
   "eslintConfig": {
     "extends": "react-app"
   },
