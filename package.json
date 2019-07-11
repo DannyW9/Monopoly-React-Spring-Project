@@ -20,7 +20,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://monopoly-calum-game.herokuapp.com",
+  "homepage": "https://serene-wave-60715.herokuapp.com/",
   "eslintConfig": {
     "extends": "react-app"
   },
