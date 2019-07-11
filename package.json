@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "caniuse-lite": "^1.0.30000974",
+    "caniuse-lite": "^1.0.30000983",
     "mocha": "^6.1.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -11,8 +11,8 @@
     "react-scripts": "3.0.1"
   },
   "engines": {
-  "node": "11.3.0",
-  "npm": "6.4.1"
+    "node": "11.3.0",
+    "npm": "6.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,8 +40,8 @@
     ]
   },
   "buildpacks": [
-   {
-     "url": "https://github.com/mars/create-react-app-buildpack"
-   }
- ]
+    {
+      "url": "https://github.com/mars/create-react-app-buildpack"
+    }
+  ]
 }
