@@ -2,7 +2,7 @@ class Request {
 
   get(url){
     return fetch(url)
-    .then((res)=> console.log(res));
+    .then((res)=> console.log("FETCH:" + res));
     //.then((res) => res.json());
   }
 
