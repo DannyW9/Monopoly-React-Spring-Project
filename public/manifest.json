@@ -3,7 +3,7 @@
   "name": "Create React App Sample",
   "icons": [
     {
-      "src": "https://serene-wave-60715.herokuapp.com/favicon.ico",
+      "src": "https://monopoly-frontend-calum.herokuapp.com/favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }
