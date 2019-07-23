@@ -1,5 +1,7 @@
 # Brief
 
+## Hosted at : https://monopoly-frontend-calum.herokuapp.com/
+
 ## MVP
 There is a board
 
