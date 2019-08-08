@@ -10,7 +10,6 @@
     "react-router": "^5.0.1",
     "react-scripts": "3.0.1"
   },
-  "proxy": "https://monopoly-calum.herokuapp.com",
   "engines": {
     "node": "12.6.0",
     "npm": "6.9.0"

@@ -42,7 +42,7 @@ class Game extends Component {
   componentDidMount(){
     const request = new Request();
 
-    request.get('/cards')
+    request.get('https://monopoly-database.herokuapp.com/cards')
     .then((data) => {
       for (let card of data) {
         if(card.name === "Chance"){
@@ -53,7 +53,7 @@ class Game extends Component {
       }
     })
 
-    request.get('/squares')
+    request.get('https://monopoly-database.herokuapp.com/squares')
     .then((data) => {
       for (let square of data) {
         this.state.squares.push(new Square(square.name, square.squareNumber, square.setColour, square.purchasePrice, square.rents, square.buildCost))
